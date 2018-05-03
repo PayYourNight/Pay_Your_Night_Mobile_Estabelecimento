@@ -1,0 +1,8 @@
+{
+  "name": "pyn_est",
+  "app_id": "e1bd814f",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
