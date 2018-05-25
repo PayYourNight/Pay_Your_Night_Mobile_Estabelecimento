@@ -6,6 +6,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { CheckinPage } from '../pages/checkin/checkin';
+import { CheckoutPage } from '../pages/checkout/checkout';
+import { ProdutosPage } from '../pages/produtos/produtos';
+import { VendaPage } from '../pages/venda/venda';
 
 
 @Component({
@@ -26,6 +29,9 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       { title: 'Check-in', component: CheckinPage },
+      { title: 'Produtos', component: ProdutosPage },
+      { title: 'Venda', component: VendaPage },
+      { title: 'Check-out', component: CheckoutPage }
     ];
 
   }

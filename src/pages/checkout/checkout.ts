@@ -3,15 +3,12 @@ import { ViewController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
  
 @Component({
-  selector: 'page-checkin',
-  templateUrl: 'checkin.html'
+  selector: 'page-checkout',
+  templateUrl: 'checkout.html'
 })
-export class CheckinPage {
-  qrData = null;
-  createdCode = null;
+export class CheckoutPage {  
   scannedCode = null;
-  userId = '28383794-7ab5-41a8-8272-9fc18f8df786';
- 
+   
   constructor(private barcodeScanner: BarcodeScanner, public viewCtrl: ViewController) { }
   
   scanCode() {

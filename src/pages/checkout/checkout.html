@@ -1,0 +1,14 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Check-out
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content padding>    
+    <ion-card *ngIf="scannedCode">
+      <ion-card-content>
+        Result from Scan: {{ scannedCode }}
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
