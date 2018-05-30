@@ -12,6 +12,7 @@ export class CheckinService {
     constructor(private http:HttpClient) {}
  
     criarCheckin(usuarioId, estabelecimentoId, transactionId) {
+        //return this.http.post('http://10.0.2.2:3000/api/checkin', { 
         return this.http.post('http://localhost:3000/api/checkin', { 
             "usuario": usuarioId, 
             "estabelecimento": estabelecimentoId,

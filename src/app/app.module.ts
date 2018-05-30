@@ -24,6 +24,7 @@ import { LoginProvider } from '../providers/login/login';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 
 let config: SocketIoConfig = { 
+  // url: "http://10.0.2.2:3000/",
   url: "http://localhost:3000/",
   options: {}
 };

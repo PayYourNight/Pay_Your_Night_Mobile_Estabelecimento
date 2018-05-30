@@ -15,7 +15,8 @@ export class LoginProvider {
       };
 
     return this.http
-    .post('http://localhost:3000/api/auth/signin', credentials);
+    //.post('http://10.0.2.2:3000/api/auth/authenticate', credentials);
+    .post('http://localhost:3000/api/auth/authenticate', credentials);
   }
 
   signout(){

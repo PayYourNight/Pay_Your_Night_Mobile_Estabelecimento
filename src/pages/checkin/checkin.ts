@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { ViewController, ToastController, ModalController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Socket } from 'ng-socket-io';
 import { CheckinService } from './checkin.service'
+import { User } from '../../providers/interfaces/user';
 
 @Component({
   selector: 'page-checkin',
@@ -21,8 +22,13 @@ export class CheckinPage {
     private barcodeScanner: BarcodeScanner, 
     public viewCtrl: ViewController,
     private socket: Socket,
-    private service: CheckinService
+    private service: CheckinService,
+    public toastCtrl: ToastController,
+    public modalCtrl: ModalController
   ) { 
+    
+    let user = localStorage.getItem('user');
+    //this.estabelecimentoId = user.estabelecimento
 
     socket.emit('checkinConnect', {
       user: this.usuarioId,
@@ -34,6 +40,11 @@ export class CheckinPage {
         }
       }
     });
+  }
+
+  presentProfileModal() {
+    let profileModal = this.modalCtrl.create(ModalConfirmacaoPage);
+    profileModal.present();
   }
   
   scanCode() {
@@ -57,7 +68,13 @@ export class CheckinPage {
   }
 
   criarCheckinBD(){
-    this.service.criarCheckin(this.usuarioId, this.estabelecimentoId, this.transactionId);    
+    this.service.criarCheckin(this.usuarioId, this.estabelecimentoId, this.transactionId)
+    .subscribe(
+      (data) => {
+        if (data){
+
+        }
+      });   
   }
 
   emitirMensagemServidor(){
@@ -65,6 +82,30 @@ export class CheckinPage {
       "estabelecimentoId": this.estabelecimentoId,
       "transactionId": this.transactionId 
     });
+  }
+
+  // presentToast() {
+  //   let toast = this.toastCtrl.create({
+  //     message: 'Check-in realizado com sucesso.',
+  //     position: 'top',
+  //     duration: 3000
+  //   });
+  //   toast.present();
+  // }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+}
+
+/*********************************/
+
+@Component({
+  selector: 'page-modal-confirmacao',
+  templateUrl: 'modal-confirmacao.html'
+})
+export class ModalConfirmacaoPage {
+  constructor(public viewCtrl: ViewController) {
   }
 
   dismiss() {
