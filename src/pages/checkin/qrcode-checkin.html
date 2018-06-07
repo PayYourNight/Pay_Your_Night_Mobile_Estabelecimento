@@ -1,0 +1,19 @@
+<ion-header>
+        <ion-navbar>
+          <ion-title>Check-in</ion-title>
+        </ion-navbar>
+      </ion-header>
+      <ion-content padding>           
+        <ion-card> 
+          <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+          <ion-card-content>
+            <p>Value: {{ createdCode }}</p>
+          </ion-card-content> 
+        </ion-card>  
+       
+        <ion-card *ngIf="scannedCode">
+          <ion-card-content>
+            Result from Scan: {{ scannedCode }}
+          </ion-card-content>
+        </ion-card>
+      </ion-content>

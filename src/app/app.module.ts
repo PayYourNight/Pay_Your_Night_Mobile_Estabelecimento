@@ -9,10 +9,12 @@ import { WelcomePage } from '../pages/welcome/welcome'
 import { HomePage } from '../pages/home/home';
 
 import { CheckinPage } from '../pages/checkin/checkin';
+// import { QrcodeCheckinPage } from '../pages/checkin/qrcode-checkin';
 import { CheckinService } from '../pages/checkin/checkin.service';
 
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { ProdutosPage } from '../pages/produtos/produtos';
+import { ProdutoPage } from '../pages/produtos/produto';
 import { VendaPage } from '../pages/venda/venda';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -22,11 +24,13 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { LoginProvider } from '../providers/login/login';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
+
 import { ProdutosProvider } from '../providers/produtos/produtos';
 
+
 let config: SocketIoConfig = { 
-  // url: "http://10.0.2.2:3000/",
-  url: "http://localhost:3000/",
+   url: "http://10.0.2.2:3000/",
+  //url: "http://localhost:3000/",
   options: {}
 };
 
@@ -38,8 +42,10 @@ let config: SocketIoConfig = {
     RegisterPage,
     HomePage,    
     CheckinPage, 
+    // QrcodeCheckinPage,
     CheckoutPage,
     ProdutosPage,
+    ProdutoPage,
     VendaPage,
     ConfiguracoesPage
   ],
@@ -57,8 +63,10 @@ let config: SocketIoConfig = {
     RegisterPage,
     HomePage,
     CheckinPage,
+    // QrcodeCheckinPage,
     CheckoutPage,
     ProdutosPage,
+    ProdutoPage,
     VendaPage,
     ConfiguracoesPage    
   ],
@@ -69,7 +77,7 @@ let config: SocketIoConfig = {
     BarcodeScanner,
     CheckinService,
     LoginProvider,
-    ProdutosProvider
+    ProdutosProvider    
   ]
 })
 export class AppModule {}

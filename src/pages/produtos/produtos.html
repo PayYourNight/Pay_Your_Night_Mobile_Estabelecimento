@@ -1,22 +1,25 @@
-<ion-content padding>
-  <ion-card>
-    <ion-card-header>
-      Infinity Scroll Example
-    </ion-card-header>
-    <ion-card-content>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-    </ion-card-content>
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Produtos</ion-title>
+  </ion-navbar>
+</ion-header>
 
-  </ion-card>
-  <ion-list>
-    <ion-item *ngFor="let produto of produtos">
-      <ion-avatar item-start>
-        <img src="{{produto.imagem}}">
-      </ion-avatar>
-      <h2>{{produto.nome}}</h2>
-    </ion-item>
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>    
+    <ion-item *ngFor="let produto of arrProdutos" detail-push text-wrap>      
+      <a ion-item no-lines (click)="productDetail(produto._id)" >
+        <ion-avatar item-start>
+          <img src="{{produto.imagem}}">
+        </ion-avatar>
+        <h3>Produto teste{{produto.titulo}}</h3>
+        <h6><small>{{produto.valor | number:'1.1-5'}}</small></h6>
+      </a> 
+      <!-- <pre>{{produto | json}}</pre> -->
+    </ion-item>       
   </ion-list>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">
