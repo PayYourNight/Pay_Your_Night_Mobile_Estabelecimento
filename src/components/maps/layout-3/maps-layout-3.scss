@@ -1,0 +1,14 @@
+// Style Google Maps - Full Screen View
+maps-layout-3 {
+  .toolbar-ios {
+    min-height: 64px;
+  }
+
+  .bar-button-default-ios,
+  .toolbar-title-ios {
+    padding-top: 20px;
+  }
+    .sebm-google-map-container {
+        height: calc(100% - 44px);
+    }
+}

@@ -1,0 +1,63 @@
+/*  #Style Parallax - Product
+===========================================*/
+parallax-layout-3 {
+  @include settingAnimationHeader;
+
+  .scroll-content {
+    top: -56px;
+  }
+  // Settings Big Image
+  [background-size] {
+    height: 66%;
+    position: relative;
+  }
+  // Settings Action Shit
+  [button-action-shit] {
+    top: 56px;
+    right: 16px;
+  }
+  .toolbar-ios {
+    min-height: 64px;
+  }
+
+  .bar-button-default-ios,
+  .toolbar-title-ios {
+    padding-top: 20px;
+  }
+  .content-ios .scroll-content {
+    top: -64px !important;
+  }
+
+  ion-item-divider {
+    .label-ios,
+    .label-md {
+      margin: 0 !important;
+    }
+
+    ion-badge {
+      position: absolute;
+      bottom: -1px;
+      right: 5px;
+    }
+    // New Category
+    [new-category] {
+      display: block;
+      font-size: 11px;
+      margin-bottom: 5px;
+      font-weight: 500 !important;
+      letter-spacing: 1px;
+      //color: red !important;
+    }
+    // Parallax Title
+    [parallax-title] {
+      font-size: $h2-font-size !important;
+      margin-bottom: 5px;
+      color: color($parallaxPage, parallax-title-product);
+    }
+    // Parallax Title
+    [parallax-subtitle] {
+      font-size: $h3-font-size !important;
+      color: color($parallaxPage, parallax-subtitle-product);
+    }
+  }
+}

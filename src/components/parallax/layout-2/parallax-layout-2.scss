@@ -1,0 +1,76 @@
+/*  #Style Parallax - Profile
+===========================================*/
+parallax-layout-2 {
+  @include settingAnimationHeader;
+  @-webkit-keyframes color-change {
+    0% {
+      color: theme-colors('mainColors', 'primary');
+    }
+
+    100% {
+      color: theme-colors('textColors', 'accent') !important;
+    }
+  }
+
+  .toolbar-ios {
+    min-height: 64px;
+  }
+
+  .bar-button-default-ios,
+  .toolbar-title-ios {
+    padding-top: 20px;
+  }
+  .content-ios .scroll-content {
+    top: -64px !important;
+  }
+
+  .active .back-button,
+  .active .toolbar-title {
+    color: theme-colors('textColors', 'accent') !important;
+    animation-name: color-change;
+    animation-duration: 400ms;
+  }
+
+  .back-button,
+  .toolbar-title {
+    color: theme-colors('textColors', 'secondaryBase') !important;
+  }
+
+  .scroll-content {
+    top: -56px;
+  }
+
+  [background-size] {
+    @include darkening-blend-mode;
+    height: 300px;
+    position: relative;
+
+
+    [parallax-title] {
+      color: color($parallaxPage, parallax-title-basic);
+      z-index: 99999;
+      position: relative;
+    }
+
+    [parallax-subtitle] {
+      color: color($parallaxPage, parallax-subtitle-basic);
+      z-index: 99999;
+      position: relative;
+    }
+
+
+    ion-thumbnail {
+      opacity: 1 !important;
+      z-index: 99999;
+      position: relative;
+
+      img {
+        border-radius: 50% !important;
+        height: 92px;
+        width: 92px;
+        margin: 50px auto 0;
+
+      }
+    }
+  }
+}

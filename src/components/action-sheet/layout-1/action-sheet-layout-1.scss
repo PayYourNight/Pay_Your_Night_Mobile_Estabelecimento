@@ -1,0 +1,62 @@
+/*  Theme Action Sheet - Basic
+===========================================*/
+
+action-sheet-layout-1 {
+  @include settingAnimationHeader;
+
+  .toolbar-ios {
+    min-height: 64px;
+  }
+
+  .bar-button-default-ios,
+  .toolbar-title-ios {
+    padding-top: 20px;
+  }
+  .content-ios .scroll-content {
+    top: -64px !important;
+  }
+  [button-action-shit] {
+    z-index: 99999;
+    right: 16px;
+    top: 56px;
+  }
+
+  .scroll-content {
+    top: -56px;
+  }
+
+  [background-size] {
+    height: 66%;
+    position: relative;
+  }
+
+  ion-item-divider {
+    .label-ios,
+    .label-md {
+      margin: 0 !important;
+    }
+
+    ion-badge {
+      position: absolute;
+      bottom: -1px;
+      right: 5px;
+    }
+  }
+  // New Category
+  [new-category] {
+    display: block;
+    font-size: 11px;
+    color: theme-colors('textColors', 'accent') !important;
+    margin-bottom: 5px;
+  }
+  // Parallax Title
+  [parallax-title] {
+    color: theme-colors('textColors', 'accentDark') !important;
+    font-size: $h2-font-size !important;
+  }
+  // Parallax Title
+  [parallax-subtitle] {
+    color: theme-colors('textColors', 'secondary') !important;
+    font-size: $h3-font-size !important;
+  }
+}

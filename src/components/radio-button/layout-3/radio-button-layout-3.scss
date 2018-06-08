@@ -1,0 +1,13 @@
+/*  #Style Radio Button - Simple 2
+===========================================*/
+radio-button-layout-3 {
+  [item-start] {
+    margin-right: 16px !important;
+  }
+
+  .item-radio-checked {
+    [item-subtitle] {
+      color: theme-colors('textColors', 'secondary');
+    }
+  }
+}

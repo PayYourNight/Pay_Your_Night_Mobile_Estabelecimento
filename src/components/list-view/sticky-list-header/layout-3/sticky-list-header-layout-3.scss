@@ -1,0 +1,58 @@
+/*  #Style Sticky List Header - Post
+================================================*/
+sticky-list-header-layout-3 {
+  [ion-affix] {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    border-bottom: $item-divider-small;
+    border-top: none !important;
+    position: relative;
+    margin: 0;
+
+    .label-ios,
+    .label-md {
+      margin: 0;
+    }
+
+    [header-title] {
+      color: color($stickyListHeader, sticky-list-header-title-basic) !important;
+    }
+
+    [item-subtitle] {
+      color: color($stickyListHeader, sticky-list-header-title-basic) !important;
+    }
+  }
+
+  [card-title] {
+    color: color($stickyListHeader, sticky-list-header-subtitle-basic) !important;
+    font-size: $h4-font-size !important;
+    font-weight: normal !important;
+  }
+
+  [card-subtitle] {
+    color: color($stickyListHeader, sticky-list-header-description-basic) !important;
+    font-size: $h6-font-size !important;
+  }
+
+  ion-card {
+    width: 100% !important;
+    box-shadow: none !important;
+
+    ion-avatar {
+      min-width: 48px !important;
+      min-height: 48px !important;
+      z-index: 1 !important;
+      filter: none !important;
+
+      img {
+        width: 48px !important;
+        height: 48px !important;
+      }
+    }
+
+    ion-card-content {
+      padding-top: 28px !important;
+    }
+  }
+}

@@ -11,10 +11,25 @@ import { HomePage } from '../home/home';
 })
 export class WelcomePage {
 
+  params:any = {};
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     if (localStorage.getItem('user')){
       this.navCtrl.setRoot(HomePage);
     }
+
+    // this.params.data = {
+    //   "duration": 100000,
+    //   "backgroudImage": 'assets/images/background/23.jpg',
+    //   "logo": 'assets/images/logo/1.png',
+    //   "title": 'IONICTEMPLATE'
+    // };
+
+    // this.params.events = {
+    //   "onRedirect": function(){
+    //     console.log('redirect');
+    //   }
+    // };
   }
 
   ionViewDidLoad() {

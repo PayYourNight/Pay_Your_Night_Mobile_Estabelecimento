@@ -1,11 +1,10 @@
-<ion-header>
-    <ion-navbar>
-        <ion-title>Login</ion-title>
-    </ion-navbar>      
-</ion-header>
-
 <ion-content>
-    <ion-list>
+    <login-layout-1
+        [data]="params.data"
+        [events]="params.events">
+    </login-layout-1>
+    
+    <!-- <ion-list>
 
         <ion-item>
         <ion-label floating>Username</ion-label>
@@ -24,5 +23,5 @@
     <button ion-button full (click)="signIn()">Sign In</button>
     <p [hidden]="!error" style="color: red" >Login ou senha inválidos</p>
 
-    </div>
+    </div> -->
 </ion-content>

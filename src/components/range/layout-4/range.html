@@ -1,0 +1,12 @@
+<!-- RANGE COMPONENTS - Two sliders -->
+<ion-list no-margin *ngIf="data != null">
+    <ion-list-header no-lines no-margin text-uppercase>
+        <p ion-text>{{data.title}}</p>
+    </ion-list-header>
+    <ion-item>
+        <ion-range dualKnobs="true" pin="true" [(ngModel)]="data.value" (ionChange)="onEvent('onChange', data.value, $event)">
+            <ion-label range-left span-large>{{data.textLeft}}</ion-label>
+            <ion-label range-right span-large>{{data.textRight}}</ion-label>
+        </ion-range>
+    </ion-item>
+</ion-list>

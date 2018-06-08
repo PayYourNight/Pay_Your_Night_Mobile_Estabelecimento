@@ -1,0 +1,63 @@
+/*  #Style Sticky List Header - Product
+================================================*/
+
+sticky-list-header-layout-2 {
+  [ion-affix] {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    border-top: none !important;
+    color: color($stickyListHeader, sticky-list-header-title-basic) !important;
+    border-bottom: $item-divider-small;
+    background-color: theme-colors('mainColors', 'primary');
+  }
+  // Settings Card
+  ion-card {
+    border-radius: 0 !important;
+    margin-top: 18px !important;
+    padding-bottom: 18px;
+    border-bottom: $item-divider-small;
+    box-shadow: none !important;
+
+    img {
+      border-radius: $border-radius !important;
+      object-fit: cover;
+    }
+
+    [list-images] {
+      margin-top: 5px !important;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+
+      [images] {
+        width: 24% !important;
+        min-height: 80px;
+        border-radius: $border-radius;
+        object-fit: cover;
+      }
+
+      [images]:last-child {
+        margin-right: 0 !important;
+      }
+    }
+
+    ion-card-content {
+      button {
+        box-shadow: none !important;
+        margin-top: -5px !important;
+        height: 28px !important;
+        padding: 0 15px !important;
+      }
+      [card-title] {
+      color: color($stickyListHeader, sticky-list-header-title-basic) !important;  
+      }
+
+      [span-small] {
+        font-size: 11px;
+        letter-spacing: 1px;
+        padding-top: 13px;
+      }
+    }
+  }
+}

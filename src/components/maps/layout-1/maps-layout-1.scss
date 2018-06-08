@@ -1,0 +1,33 @@
+// Style Google Maps - GMAPS + Location  Details
+maps-layout-1 {
+  .toolbar-ios {
+    min-height: 64px;
+  }
+
+  .bar-button-default-ios,
+  .toolbar-title-ios {
+    padding-top: 20px;
+  }
+  .sebm-google-map-container {
+    height: 350px;
+  }
+
+  .item-inner {
+    margin-left: 0 !important;
+  }
+
+  [maps-title] {
+      font-weight: bold !important;
+  }
+
+  [span-small] {
+    margin-top: 6px;
+    display: block;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  .icon-star::before {
+    margin: 0 !important;
+  }
+}

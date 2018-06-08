@@ -1,0 +1,41 @@
+/*  #Style Google Card - Styled cards 2
+================================================*/
+
+google-card-layout-2 {
+  // Settings Card
+  ion-card {
+    box-shadow: none !important;
+    border-radius: $border-radius !important;
+
+    [card-image] {
+      position: relative;
+
+      ion-badge {
+        right: 65px;
+        bottom: 10px;
+        z-index: 3;
+        padding: 6px 15px !important;
+      }
+
+      [button-action-shit] {
+        bottom: 6px;
+        right: 16px;
+      }
+    }
+    // Card Description
+    [card-title] {
+      white-space: nowrap !important;
+      color: color($googleCard, card-title-basic) !important;
+    }
+
+    [card-subtitle] {
+      margin-bottom: 40px;
+      white-space: nowrap !important;
+      color: color($googleCard, card-subtitle-basic) !important;
+    }
+
+    [card-body-text] {
+      color: color($googleCard, card-description-basic) !important;
+    }
+  }
+}

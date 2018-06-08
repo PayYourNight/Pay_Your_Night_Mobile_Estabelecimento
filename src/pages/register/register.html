@@ -7,25 +7,8 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-list>
-
-        <ion-item>
-        <ion-label floating>E-mail</ion-label>
-        <ion-input type="text" #nome></ion-input>
-        </ion-item>
-    
-        <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="password" #password></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label floating>Código de Pareamento</ion-label>
-            <ion-input type="text" #password></ion-input>
-        </ion-item>
-    
-    </ion-list>
-
-    <button ion-button block (click)="doRegister()">Registrar</button>
-
+    <register-layout-2
+    [data]="params.data"
+    [events]="params.events">
+    </register-layout-2>
 </ion-content>

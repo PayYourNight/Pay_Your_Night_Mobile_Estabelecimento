@@ -1,0 +1,42 @@
+/*  #Style Search - Simple
+===========================================*/
+search-bar-layout-1 {
+  @include avatar(true);
+  .toolbar-ios {
+    min-height: 64px;
+  }
+
+  .bar-button-default-ios,
+  .toolbar-title-ios {
+    padding-top: 20px;
+  }
+
+  [card-background-page] {
+    ion-card {
+      position: relative;
+      height: 215px;
+      border-radius: $border-radius;
+      @include darkening-blend-mode-img(true);
+
+      img {
+        min-height: 215px;
+      }
+    }
+    [card-title] {
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      z-index: 99999;
+      color: theme-colors('textColors', 'secondaryBase') !important;
+    }
+
+    [card-subtitle] {
+      position: absolute;
+      bottom: 16px;
+      left: 22px;
+      right: 15%;
+      z-index: 99999;
+      color: theme-colors('textColors', 'secondaryBase') !important;
+    }
+  }
+}

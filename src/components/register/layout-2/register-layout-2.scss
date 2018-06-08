@@ -1,0 +1,66 @@
+/*  #Style Register + Image
+================================================*/
+
+register-layout-2 {
+    .scroll-content {
+      margin-top: 0 !important;
+    }
+    .back-button,
+    .toolbar-title {
+      color: color($colors, 'secondary') !important;
+    }
+    .toolbar-ios {
+      min-height: 64px;
+    }
+
+    .bar-button-default-ios,
+    .toolbar-title-ios {
+      padding-top: 20px;
+    }
+    ion-grid,
+    ion-row {
+        height: 100%;
+
+    [form] {
+      padding: 16px 16px 0 16px !important;
+
+    ion-item {
+      padding-left: 0 !important;
+      padding-bottom: 15px !important;
+
+      [error-field] {
+        margin: 0 !important;
+        position: absolute !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        font-size: 12px;
+      }
+      .item-inner {
+        border-bottom-color: theme-colors('textColors', 'secondary') !important;
+        box-shadow: none !important;
+    }
+    ion-label {
+      margin: 0 !important;
+    }
+  }
+    [stacked] {
+        font-size: 10px !important;
+    }
+}
+    // Settings Background Size
+    [background-size] {
+        height: 40%;
+        position: relative;
+        @include darkening-blend-mode;
+    }
+
+    // Header Title
+    [register-title] {
+        color: color($register, register-image-title);
+        position: absolute;
+        bottom: 10px;
+        left: 25px;
+        z-index: 999;
+    }
+  }
+}

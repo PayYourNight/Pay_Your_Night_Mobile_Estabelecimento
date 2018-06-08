@@ -4,9 +4,5 @@
     </ion-navbar>
   </ion-header>
   <ion-content padding>    
-    <ion-card *ngIf="scannedCode">
-      <ion-card-content>
-        Result from Scan: {{ scannedCode }}
-      </ion-card-content>
-    </ion-card>
+      <button ion-button full icon-left (click)="scanCode()"><ion-icon name="qr-scanner"></ion-icon>Check-in</button> 
   </ion-content>

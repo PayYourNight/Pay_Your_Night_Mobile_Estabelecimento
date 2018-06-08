@@ -1,0 +1,54 @@
+/*  #Style Wizard Big image
+===========================================*/
+wizard-layout-3 {
+
+
+  [background-size] {
+      position: relative;
+      @include darkening-blend-mode;
+  }
+
+  // Wizard Content
+  [wizard-content] {
+    position: absolute;
+    right: 20%;
+    left: 30px;
+    top: 22%;
+    z-index: 999;
+
+
+    [wizard-title] {
+      color: color($wizardPage, wizard-title-big-image-text);
+    }
+
+    [wizard-subtitle] {
+      color: color($wizardPage, wizard-subtitle-big-image-text);
+    }
+  }
+
+  // Button Wizard
+  [button-wizard ] {
+    color: theme-colors('textColors', 'secondaryBase') !important;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    z-index: 2;
+    width: 160px;
+    left: 50%;
+    font-weight: 300 !important;
+    margin-left: -80px;
+  }
+
+  // Settings Pagination
+  .swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: 100px;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: theme-colors('textColors', 'secondaryBase') !important
+  }
+
+  .swiper-pagination-bullet {
+    background: theme-colors('mainColors', 'accent');
+  }
+}

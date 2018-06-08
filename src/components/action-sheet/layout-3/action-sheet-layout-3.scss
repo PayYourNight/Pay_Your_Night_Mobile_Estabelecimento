@@ -1,0 +1,61 @@
+/*  Action Sheet - With Text Header
+================================================*/
+
+action-sheet-layout-3 {
+  @include avatar(true);
+  .label-ios,
+  .label-md {
+    margin: 0 !important;
+  }
+
+  [button-action-shit] {
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+  }
+
+  .toolbar-ios {
+    min-height: 64px;
+  }
+
+  .bar-button-default-ios,
+  .toolbar-title-ios {
+    padding-top: 20px;
+  }
+
+  ion-card {
+    box-shadow: none !important;
+
+    [big-images] {
+      position: relative;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      @include darkening-blend-mode-img(true);
+      border-radius: $border-radius !important;
+      box-shadow: none !important;
+      overflow: hidden;
+
+      img {
+        height: 200px;
+        border-radius: $border-radius !important;
+      }
+    }
+    // New Category
+    [new-category] {
+      display: block;
+      font-size: 11px;
+      color: theme-colors('textColors', 'accent') !important;
+      margin-bottom: 5px;
+      font-weight: 100;
+      letter-spacing: 1px;
+    }
+    // Card Subtitle
+    [card-subtitle] {
+      font-size: $h3-font-size !important;
+      padding-right: 70px;
+    }
+    [card-title] {
+      color: color($googleCard, card-title-basic) !important;
+    }
+  }
+}

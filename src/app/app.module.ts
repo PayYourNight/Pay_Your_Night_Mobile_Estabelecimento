@@ -4,6 +4,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 import { MyApp } from './app.component';
 import { WelcomePage } from '../pages/welcome/welcome'
 import { HomePage } from '../pages/home/home';
@@ -27,6 +30,13 @@ import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 
 import { ProdutosProvider } from '../providers/produtos/produtos';
 
+import { SplashScreenLayout1 } from '../components/splash-screen/layout-1/splash-screen-layout-1';
+import { LoginLayout1 } from '../components/login/layout-1/login-layout-1';
+import { RegisterLayout2 } from '../components/register/layout-2/register-layout-2';
+import { MenuService } from '../services/menu-service';
+import { AppSettings } from '../services/app-settings';
+import { LoadingService } from '../services/loading-service';
+
 
 let config: SocketIoConfig = { 
    url: "http://10.0.2.2:3000/",
@@ -47,13 +57,18 @@ let config: SocketIoConfig = {
     ProdutosPage,
     ProdutoPage,
     VendaPage,
-    ConfiguracoesPage
+    ConfiguracoesPage,
+    SplashScreenLayout1,
+    LoginLayout1,
+    RegisterLayout2
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     SocketIoModule.forRoot(config),
-    HttpClientModule 
+    HttpClientModule,
+    AngularFireModule.initializeApp(AppSettings.FIREBASE_CONFIG),
+    AngularFireDatabaseModule 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -68,7 +83,10 @@ let config: SocketIoConfig = {
     ProdutosPage,
     ProdutoPage,
     VendaPage,
-    ConfiguracoesPage    
+    ConfiguracoesPage,
+    SplashScreenLayout1,
+    LoginLayout1,
+    RegisterLayout2    
   ],
   providers: [
     StatusBar,
@@ -77,7 +95,9 @@ let config: SocketIoConfig = {
     BarcodeScanner,
     CheckinService,
     LoginProvider,
-    ProdutosProvider    
+    ProdutosProvider,
+    MenuService,
+    LoadingService    
   ]
 })
 export class AppModule {}

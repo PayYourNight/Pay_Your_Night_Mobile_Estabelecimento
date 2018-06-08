@@ -1,0 +1,39 @@
+/*  #Style Wizard Big image
+===========================================*/
+wizard-layout-2 {
+  // Settings Content
+  ion-slides {
+    display: block;
+    width: 100%;
+    height: 90%;
+
+    .slide-zoom {
+      height: 100%;
+
+      [background-size] {
+        height: 50%;
+      }
+    }
+    // Settings Subtitle
+    [wizard-description] {
+      color: color($wizardPage, wizard-description-big-image);
+    }
+
+    [wizard-subtitle] {
+      color: color($wizardPage, wizard-subtitle-big-image);
+    }
+
+    // Settings Title
+    [wizard-title] {
+      color: color($wizardPage, wizard-title-big-image);
+    }
+  }
+  // Pagination
+  .swiper-slide {
+    display: block !important;
+  }
+
+  .swiper-pagination-bullet {
+    background: theme-colors('mainColors', 'accent') !important;
+  }
+}
