@@ -3,6 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -22,12 +24,12 @@ import { VendaPage } from '../pages/venda/venda';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { LoginProvider } from '../providers/login/login';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
-
+import { QrcodeReaderConsumoPage } from '../pages/venda/barcodereader_consumo/barcodereader_consumo';
+import { BuscaProdutosVendaPage } from '../pages/venda/buscaprodutos/buscaprodutos';
 import { ProdutosProvider } from '../providers/produtos/produtos';
 
 import { SplashScreenLayout1 } from '../components/splash-screen/layout-1/splash-screen-layout-1';
@@ -39,8 +41,8 @@ import { LoadingService } from '../services/loading-service';
 
 
 let config: SocketIoConfig = { 
-   url: "http://10.0.2.2:3000/",
-  //url: "http://localhost:3000/",
+   //url: "http://10.0.2.2:3000/",
+  url: "http://localhost:3000/",
   options: {}
 };
 
@@ -52,7 +54,6 @@ let config: SocketIoConfig = {
     RegisterPage,
     HomePage,    
     CheckinPage, 
-    // QrcodeCheckinPage,
     CheckoutPage,
     ProdutosPage,
     ProdutoPage,
@@ -60,7 +61,9 @@ let config: SocketIoConfig = {
     ConfiguracoesPage,
     SplashScreenLayout1,
     LoginLayout1,
-    RegisterLayout2
+    RegisterLayout2,
+    BuscaProdutosVendaPage,
+    QrcodeReaderConsumoPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,8 @@ let config: SocketIoConfig = {
     SocketIoModule.forRoot(config),
     HttpClientModule,
     AngularFireModule.initializeApp(AppSettings.FIREBASE_CONFIG),
-    AngularFireDatabaseModule 
+    AngularFireDatabaseModule,
+    NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -78,7 +82,6 @@ let config: SocketIoConfig = {
     RegisterPage,
     HomePage,
     CheckinPage,
-    // QrcodeCheckinPage,
     CheckoutPage,
     ProdutosPage,
     ProdutoPage,
@@ -86,7 +89,9 @@ let config: SocketIoConfig = {
     ConfiguracoesPage,
     SplashScreenLayout1,
     LoginLayout1,
-    RegisterLayout2    
+    RegisterLayout2,
+    BuscaProdutosVendaPage,
+    QrcodeReaderConsumoPage
   ],
   providers: [
     StatusBar,

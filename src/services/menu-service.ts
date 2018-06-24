@@ -22,13 +22,12 @@ export class MenuService implements IService {
 
     getAllThemes = (): Array<any> => {
       return [
-           { "title":"Home", "theme":"listViews", "icon": "icon-home", "component": HomePage  },
-           { "title":"Check-in", "theme":"listViews", "icon": "icon-home", "component": CheckinPage  },
-           { "title":"Produtos", "theme":"listViews", "icon": "icon-home", "component": ProdutosPage  },
-           { "title":"Produtos", "theme":"listViews", "icon": "icon-home", "component": VendaPage  },
-           { "title":"Check-out", "theme":"listViews", "icon": "icon-home", "component": CheckoutPage  },
-           { "title":"Configurações", "theme":"listViews", "icon": "icon-home", "component": ConfiguracoesPage  
-          }
+        { "title": "Home", "theme": "listViews", "icon": "icon-home", "component": HomePage, "singlePage": true  },
+        { "title": "Check-in", "theme": "listViews", "icon": "icon-home", "component": CheckinPage, "singlePage": true  },
+        { "title": "Produtos", "theme": "listViews", "icon": "icon-home", "component": ProdutosPage, "singlePage": true  },
+        { "title": "Produtos", "theme": "listViews", "icon": "icon-home", "component": VendaPage, "singlePage": true  },
+        { "title": "Check-out", "theme": "listViews", "icon": "icon-home", "component": CheckoutPage, "singlePage": true  },
+        { "title": "Configurações", "theme": "listViews", "icon": "icon-home", "component": ConfiguracoesPage, "singlePage": true}
         ]
       // return [
       //   {"title" : "Home", "theme"  : "home",  "icon" : "icon-home", "listView" : false, "component": "", "singlePage":false},

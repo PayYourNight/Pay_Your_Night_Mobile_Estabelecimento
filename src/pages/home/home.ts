@@ -15,30 +15,38 @@ export class HomePage {
   estabelecimentoID = '28383794-7ab5-41a8-8272-9fc18f8df786';
   estabelecimentoNome = 'Estabelecimento Teste Socket';
 
-
   constructor(public navCtrl: NavController, private socket: Socket) {
 
-    socket.emit('checkinConnect', {      
-      user: this.user,      
-      details: {
-        estabelecimento: {
-          id : this.estabelecimentoID,
-          nome: this.estabelecimentoNome
-        }
+    //socket.emit('checkinConnect', {      
+    //  user: this.user,      
+    //  details: {
+    //    estabelecimento: {
+    //      id : this.estabelecimentoID,
+    //      nome: this.estabelecimentoNome
+    //    }
+    //  }
+    //});
+
+  }
+
+  sendMessageCheckinMOCK() {
+    console.log('feito');
+    this.socket.emit("checkin", {
+      type: 'checkin',
+      text: 'check-in realizado!',
+      created: Date.now(),
+      estabelecimento: {
+        estabelecimento_id: '28383794-7ab5-41a8-8272-9fc18f8df786',
+        estabelecimento_nome: 'Estabelecimento Teste Socket'
       }
     });
-
   }
 
-  sendMessageCheckin(){
-    this.socket.emit("checkin", 'checkin realizado');
-  }
-
-  sendMessageCheckout(){
+  sendMessageConsumoMOCK(){
     this.socket.emit("checkout", 'checkout realizado');
   }
 
-  sendMessageConsumo(){
+  sendMessageCheckoutMOCK(){
     this.socket.emit("consumo", 'consumo realizado');
   }
 

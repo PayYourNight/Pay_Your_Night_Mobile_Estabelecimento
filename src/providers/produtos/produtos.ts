@@ -14,7 +14,7 @@ export class ProdutosProvider {
     console.log('Hello ProdutosProvider Provider');
   }
 
-  getProdutos(page): Observable<Produto[]> {     
+  getProdutosPaginado(page): Observable<Produto[]> {     
     // console.log(localStorage.user);
     // console.log(localStorage.token);
 
@@ -38,6 +38,30 @@ export class ProdutosProvider {
     return this.http.get(this.apiUrl, httpOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
+  }
+
+  getProdutos(): Observable<Produto[]> {
+    // console.log(localStorage.user);
+    // console.log(localStorage.token);
+
+    //let usuario = localStorage.user._id;
+    let estabelecimento = localStorage.user.estabelecimento._id;
+
+    const params = new HttpParams()
+      .set('estabelecimento', estabelecimento)
+
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': JSON.stringify(localStorage.token || {}),
+      }),
+      params: params
+    };
+
+    return this.http.get(this.apiUrl, httpOptions)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
   
   extractData(res: Response) {    
