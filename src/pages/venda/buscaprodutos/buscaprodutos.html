@@ -11,18 +11,17 @@
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let produto of arrProdutos" detail-push text-wrap>
-      <a ion-item no-lines (click)="productDetail(produto._id)">
+      <a ion-item no-lines (click)="addproduto(produto)">
         <ion-avatar item-start>
           <img src="{{produto.imagem}}">
         </ion-avatar>
-        <h3>Produto teste{{produto.titulo}}</h3>
+        <h3>{{produto.descricao}}</h3>
         <h6><small>{{produto.valor | number:'1.1-5'}}</small></h6>
       </a>
-      <!-- <pre>{{produto | json}}</pre> -->
     </ion-item>
   </ion-list>
-
-  <!--<ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
-  </ion-infinite-scroll>-->
+ 
 </ion-content>
+<ion-footer padding>
+  <button ion-button full icon-left [disabled]="!arrProdutos" (click)="proximo()"><ion-icon name="qr-scanner"></ion-icon>Próximo</button>
+</ion-footer>

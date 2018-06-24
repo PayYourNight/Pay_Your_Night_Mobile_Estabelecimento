@@ -1,27 +1,52 @@
+<!-- Themes Login + logo 1 -->
 <ion-content>
-    <login-layout-1
-        [data]="params.data"
-        [events]="params.events">
-    </login-layout-1>
-    
-    <!-- <ion-list>
-
-        <ion-item>
-        <ion-label floating>Username</ion-label>
-        <ion-input type="text" #usernameOrEmail></ion-input>
+  <ion-grid no-padding>
+    <ion-row padding-horizontal align-self-center>
+      <ion-col align-self-start col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <button ion-button button-clear text-capitalize clear float-left (click)="onSkip()">{{data.skip}}</button>
+        <button ion-button button-clear text-capitalize clear float-right (click)="onForgot()">{{data.forgotPassword}}</button>
+      </ion-col>
+      <ion-col align-self-end col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <!---Logo-->
+        <img [src]="data.logo">
+        <!---Logo Subtitle-->
+        <h2 login-subtitle no-margin>{{data.subtitle}}</h2>
+        <!---Logo Title-->
+        <h1 ion-text padding-bottom login-title no-margin>{{data.title}}</h1>
+      </ion-col>
+      <ion-col align-self-start col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <!---Input field username-->
+        <ion-item transparent>
+          <ion-label stacked>{{data.labelUsername}}</ion-label>
+          <ion-input required placeholder="{{data.username}}" type="text" [(ngModel)]="username"></ion-input>
+          <ion-label error-field color="primary" no-margin *ngIf="!isUsernameValid">{{data.errorUser}}</ion-label>
         </ion-item>
-    
+        <!---Input field password-->
         <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="password" #password></ion-input>
+          <ion-label stacked>{{data.labelPassword}}</ion-label>
+          <ion-input required type="password" placeholder="{{data.password}}" [(ngModel)]="password"></ion-input>
+          <ion-label error-field color="primary" no-margin *ngIf="!isPasswordValid">{{data.errorPassword}}</ion-label>
         </ion-item>
-    
-    </ion-list>
-
-    <div padding>
-
-    <button ion-button full (click)="signIn()">Sign In</button>
-    <p [hidden]="!error" style="color: red" >Login ou senha inválidos</p>
-
-    </div> -->
+        <!--Pair code-->
+        <ion-item>
+          <ion-label stacked>{{data.labelPair}}</ion-label>
+          <ion-input required type="text" placeholder="{{data.paircode}}" [(ngModel)]="paircode"></ion-input>
+          <<!--ion-label error-field color="primary" no-margin *ngIf="!isPasswordValid">{{data.errorPair}}</ion-label>-->
+        </ion-item>
+      </ion-col>
+      <!---Share Section-->
+      <ion-col align-self-end bottom-form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <!---Login button-->
+        <button ion-button full text-capitalize default-button (click)="onLogin()">{{data.login}}</button>
+        <!---Facebook button-->
+        <button ion-button default-button color="facebook" full text-capitalize block (click)="onFacebook()">Login with Facebook</button>
+      </ion-col>
+      <ion-col col-12>
+        <div description text-center>
+          <p>Não tem uma conta? <a text-capitalize ion-text color="primary" (click)="onRegister()">{{data.register}}</a></p>
+        </div>
+      </ion-col>
+      <!---End Share Section-->
+    </ion-row>
+  </ion-grid>
 </ion-content>

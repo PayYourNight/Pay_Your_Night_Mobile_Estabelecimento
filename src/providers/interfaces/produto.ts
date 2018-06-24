@@ -1,8 +1,6 @@
 export interface Produto  {
-    id: string,
-    nome: string,
-    descricao: string,
-    Observacao: string,    
-    imageURL: string,
+    id: string,    
+    descricao: string,    
+    imagem: string,
     valor: number   
 }

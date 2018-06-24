@@ -7,32 +7,37 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ProdutosProvider {
- 
-  apiUrl = 'http://localhost:3000/api/produtos';
+  private user: any; 
+  private token: String; 
+  private apiUrl = 'http://localhost:3000/api/produtos';
 
   constructor(public http: HttpClient) {
     console.log('Hello ProdutosProvider Provider');
+    this.user = JSON.parse(localStorage.getItem("user"));
+    this.token = JSON.parse(localStorage.getItem("token"));
   }
 
-  getProdutosPaginado(page): Observable<Produto[]> {     
-    // console.log(localStorage.user);
-    // console.log(localStorage.token);
+  getProdutosPaginado(page): Observable<Produto[]> {
+    //console.log(localStorage.getItem("user"));
+    //console.log(localStorage.getItem("token"));
 
-    let usuario = localStorage.user._id;
-    let estabelecimento = localStorage.user.estabelecimento._id;
+    //let user = localStorage.getItem("user");
+
+    //let usuario = user._id;
+    //let estabelecimento = user.estabelecimento._id;
     
-    const params = new HttpParams()
-    .set('page', page)
-    .set('usuario', usuario)
-    .set('estabelecimento', estabelecimento)
+    //const params = new HttpParams()
+    //.set('page', page)
+    //.set('usuario', usuario)
+    //.set('estabelecimento', estabelecimento)
     
 
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': JSON.stringify( localStorage.token || {} ),        
-      }),
-      params: params
+      })//,
+      //params: params
     };
 
     return this.http.get(this.apiUrl, httpOptions)
@@ -40,28 +45,18 @@ export class ProdutosProvider {
                     .catch(this.handleError);
   }
 
-  getProdutos(): Observable<Produto[]> {
-    // console.log(localStorage.user);
-    // console.log(localStorage.token);
+  getProdutos() {
 
-    //let usuario = localStorage.user._id;
-    let estabelecimento = localStorage.user.estabelecimento._id;
-
-    const params = new HttpParams()
-      .set('estabelecimento', estabelecimento)
-
+    let estabelecimento_id = this.user.estabelecimento_id;
 
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': JSON.stringify(localStorage.token || {}),
-      }),
-      params: params
+        'Authorization': JSON.stringify(this.token || {})
+      })
     };
 
-    return this.http.get(this.apiUrl, httpOptions)
-      .map(this.extractData)
-      .catch(this.handleError);
+    return this.http.get(this.apiUrl + "/?estabelecimentoid=" + estabelecimento_id, httpOptions);
   }
   
   extractData(res: Response) {    

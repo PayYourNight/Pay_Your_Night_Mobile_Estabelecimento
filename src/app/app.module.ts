@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, ToastController } from 'ionic-angular';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
@@ -38,6 +38,9 @@ import { RegisterLayout2 } from '../components/register/layout-2/register-layout
 import { MenuService } from '../services/menu-service';
 import { AppSettings } from '../services/app-settings';
 import { LoadingService } from '../services/loading-service';
+import { MyErrorHandler } from '../handler/errorhandler';
+import { EncerrarPedidoPage } from '../pages/venda/buscaprodutos/encerrarpedido/encerrarpedido';
+import { CheckinProvider } from '../providers/checkin';
 
 
 let config: SocketIoConfig = { 
@@ -63,7 +66,8 @@ let config: SocketIoConfig = {
     LoginLayout1,
     RegisterLayout2,
     BuscaProdutosVendaPage,
-    QrcodeReaderConsumoPage
+    QrcodeReaderConsumoPage,
+    EncerrarPedidoPage
   ],
   imports: [
     BrowserModule,
@@ -91,18 +95,21 @@ let config: SocketIoConfig = {
     LoginLayout1,
     RegisterLayout2,
     BuscaProdutosVendaPage,
-    QrcodeReaderConsumoPage
+    QrcodeReaderConsumoPage,
+    EncerrarPedidoPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    //{provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: MyErrorHandler },
     BarcodeScanner,
     CheckinService,
     LoginProvider,
     ProdutosProvider,
     MenuService,
-    LoadingService    
+    LoadingService,
+    CheckinProvider
   ]
 })
 export class AppModule {}

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Encerrar Pedido</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>  
+  <ion-list>
+    <ion-item *ngFor="let item of arrItensPedido" detail-push text-wrap>
+      <ion-row>
+        <ion-col>
+          <h2>{{item.produto.descricao}}</h2>
+          <h4><small>{{item.produto.valor | number:'1.1-5'}}</small></h4>
+        </ion-col>
+        <ion-col>
+          <ion-input type="number">Quantidade</ion-input>-->
+        </ion-col>
+      </ion-row>
+</ion-item>
+  </ion-list>
+
+</ion-content>
+<ion-footer padding>
+  <button ion-button full icon-left (click)="finalizar()"><ion-icon name="qr-scanner"></ion-icon>Próximo</button>
+</ion-footer>

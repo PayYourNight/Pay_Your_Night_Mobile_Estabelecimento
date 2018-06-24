@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { ViewController, NavController } from 'ionic-angular';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ProdutosProvider } from '../../../providers/produtos/produtos'
-//import { Produto } from '../../providers/interfaces/produto';
-//import { ProdutoPage } from './produto';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import { EncerrarPedidoPage } from './encerrarpedido/encerrarpedido';
 
 @Component({
   selector: 'page-buscaprodutos',
@@ -12,104 +11,45 @@ import { ProdutosProvider } from '../../../providers/produtos/produtos'
 export class BuscaProdutosVendaPage {
 
   data: any;
-  arrProdutos: any;
+  arrProdutos: any = [];
+  arrItensPedido: any = [];
 
   constructor(
     //private produtos: ProdutosProvider,
-    public navCtrl: NavController, public produtos: ProdutosProvider) {
-
-    this.produtos.getProdutos().subscribe((data) => {
-      this.arrProdutos = data;
-    });
-    //this.arrProdutos = [
-    //  {
-    //    "_id": "5b0ef1989f88891df82ce848",
-    //    "titulo:": "Produto Teste 1",
-    //    "created": "2018-05-24T17:37:24.114Z",
-    //    "valor": "10",
-    //    "estabelecimento": {
-    //      "_id": "5b0ef8439f88891df82ce84a"
-    //    },
-    //    "imagem": "assets/imgs/Heineken.jpg"
-    //  },
-    //  {
-    //    "_id": "5b0efaf2dbc82e1df810aa9d",
-    //    "titulo:": "Produto Teste 2",
-    //    "created": "2018-05-24T17:37:24.114Z",
-    //    "valor": "10",
-    //    "estabelecimento": {
-    //      "_id": "5b0ef8439f88891df82ce84a"
-    //    }, "imagem": "assets/imgs/Heineken.jpg"
-    //  },
-    //  {
-    //    "_id": "5b0efafadbc82e1df810aa9e",
-    //    "titulo:": "Produto Teste 3",
-    //    "created": "2018-05-24T17:37:24.114Z",
-    //    "valor": "10",
-    //    "estabelecimento": {
-    //      "_id": "5b0ef8439f88891df82ce84a"
-    //    }, "imagem": "assets/imgs/Heineken.jpg"
-    //  },
-    //  {
-    //    "_id": "5b0efafadbc82e1df810aa10",
-    //    "titulo:": "Produto Teste 3",
-    //    "created": "2018-05-24T17:37:24.114Z",
-    //    "valor": "10",
-    //    "estabelecimento": {
-    //      "_id": "5b0ef8439f88891df82ce84a"
-    //    }, "imagem": "assets/imgs/Heineken.jpg"
-    //  },
-    //  {
-    //    "_id": "5b0efafadbc82e1df810aa11",
-    //    "titulo:": "Produto Teste 3",
-    //    "created": "2018-05-24T17:37:24.114Z",
-    //    "valor": "10",
-    //    "estabelecimento": {
-    //      "_id": "5b0ef8439f88891df82ce84a"
-    //    }, "imagem": "assets/imgs/Heineken.jpg"
-    //  },
-    //  {
-    //    "_id": "5b0efafadbc82e1df810aa12",
-    //    "titulo:": "Produto Teste 3",
-    //    "created": "2018-05-24T17:37:24.114Z",
-    //    "valor": "10",
-    //    "estabelecimento": {
-    //      "_id": "5b0ef8439f88891df82ce84a"
-    //    }, "imagem": "assets/imgs/Heineken.jpg"
-    //  },
-    //  {
-    //    "_id": "5b0efafadbc82e1df810aa13",
-    //    "titulo:": "Produto Teste 3",
-    //    "created": "2018-05-24T17:37:24.114Z",
-    //    "valor": "10",
-    //    "estabelecimento": {
-    //      "_id": "5b0ef8439f88891df82ce84a"
-    //    }, "imagem": "assets/imgs/Heineken.jpg"
-    //  },
-    //  {
-    //    "_id": "5b0efafadbc82e1df810aa14",
-    //    "titulo:": "Produto Teste 3",
-    //    "created": "2018-05-24T17:37:24.114Z",
-    //    "valor": "10",
-    //    "estabelecimento": {
-    //      "_id": "5b0ef8439f88891df82ce84a"
-    //    }, "imagem": "assets/imgs/Heineken.jpg"
-    //  },
-    //  {
-    //    "_id": "5b0efafadbc82e1df810aa15",
-    //    "titulo:": "Produto Teste 3",
-    //    "created": "2018-05-24T17:37:24.114Z",
-    //    "valor": "10",
-    //    "estabelecimento": {
-    //      "_id": "5b0ef8439f88891df82ce84a"
-    //    }, "imagem": "assets/imgs/Heineken.jpg"
-    //  }
-    ];
+    public navCtrl: NavController,
+    public produtos: ProdutosProvider,
+    private toastCtrl: ToastController) {
 
     this.getProdutos();
   }
 
   getProdutos() {
+    this.produtos.getProdutos().subscribe((data) => {
+      this.arrProdutos = data;
+    });
+  }
 
+  addproduto(produto) {
+
+    this.arrItensPedido.push({
+      produto: produto
+    });
+
+    this.presentToast(produto.descricao);
+
+  }
+
+  presentToast(descricao) {
+    let toast = this.toastCtrl.create({
+      message: 'Produto adicionado: ' + descricao,
+      duration: 3000,
+      position: 'top'
+    });
+
+    toast.present();
+  }
+
+  proximo() {
+    this.navCtrl.push(EncerrarPedidoPage, { itens: this.arrItensPedido });
   }
 }

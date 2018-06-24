@@ -23,7 +23,7 @@ import { IService } from '../services/IService';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
   pages: any;
   params:any;
   leftMenuTitle: string;
@@ -58,7 +58,6 @@ export class MyApp {
   // }
 
   openPage(page) {
-    console.log(page);
     if (page.singlePage) {
         this.menu.open();
       this.nav.push(page.component);
