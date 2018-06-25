@@ -8,17 +8,18 @@ import 'rxjs/add/operator/map';
 export class ConsumoProvider {
   private user: any;
   private token: String;
-  private apiUrl = 'http://localhost:3000/api/produtos';
+  private apiUrl = 'http://localhost:3000/api/consumo';
+
 
   constructor(public http: HttpClient) {
-    console.log('Hello ConsumoProvider Provider');
+    console.log('Hello CheckinProvider Provider');
     this.user = JSON.parse(localStorage.getItem("user"));
     this.token = JSON.parse(localStorage.getItem("token"));
   }
 
-  getProdutos() {
-    let estabelecimento_id = this.user.estabelecimento_id;
-
+  //TODO
+  addConsumo(consumo) {
+    console.log('realizando busca de consumo');
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -26,6 +27,7 @@ export class ConsumoProvider {
       })
     };
 
-    return this.http.get(this.apiUrl + "/?estabelecimentoid=" + estabelecimento_id, httpOptions);
+    return this.http.post(this.apiUrl, consumo, httpOptions);
+
   }
 }

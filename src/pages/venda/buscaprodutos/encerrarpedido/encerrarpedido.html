@@ -7,22 +7,29 @@
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>  
   <ion-list>
-    <ion-item *ngFor="let item of arrItensPedido" detail-push text-wrap>
-      <ion-row>
-        <ion-col>
-          <h2>{{item.produto.descricao}}</h2>
-          <h4><small>{{item.produto.valor | number:'1.1-5'}}</small></h4>
-        </ion-col>
-        <ion-col>
-          <ion-input type="number">Quantidade</ion-input>-->
-        </ion-col>
-      </ion-row>
-</ion-item>
+    <ion-item *ngFor="let produto of arrProdutos" text-wrap>
+      
+        <h2>{{produto.produto_descricao}}</h2>
+        <h4><small>{{produto.produto_valor | number:'1.1-5'}}</small></h4>
+        <!--<div item-content>-->
+          <!--<ion-select [(ngModel)]="produto.quantidade" interface="popover">
+            <ion-option value="1">1</ion-option>
+            <ion-option value="2">2</ion-option>
+            <ion-option value="3">3</ion-option>
+            <ion-option value="4">4</ion-option>
+            <ion-option value="5">5</ion-option>
+            <ion-option value="6">6</ion-option>
+            <ion-option value="7">7</ion-option>
+            <ion-option value="8">8</ion-option>
+            <ion-option value="9">9</ion-option>
+          </ion-select>-->
+        <!--</div>-->
+    </ion-item>
   </ion-list>
-
 </ion-content>
 <ion-footer padding>
-  <button ion-button full icon-left (click)="finalizar()"><ion-icon name="qr-scanner"></ion-icon>Próximo</button>
+  <button ion-button full icon-left (click)="finalizar()"><ion-icon name="qr-scanner"></ion-icon>Finalizar</button>
 </ion-footer>

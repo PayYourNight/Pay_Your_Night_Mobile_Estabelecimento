@@ -11,7 +11,7 @@ import { EncerrarPedidoPage } from './encerrarpedido/encerrarpedido';
 export class BuscaProdutosVendaPage {
 
   data: any;
-  arrProdutos: any = [];
+  arrProdutos: any = null;  
   arrItensPedido: any = [];
 
   constructor(
@@ -31,12 +31,9 @@ export class BuscaProdutosVendaPage {
 
   addproduto(produto) {
 
-    this.arrItensPedido.push({
-      produto: produto
-    });
+    this.arrItensPedido.push(produto);
 
     this.presentToast(produto.descricao);
-
   }
 
   presentToast(descricao) {
@@ -53,3 +50,40 @@ export class BuscaProdutosVendaPage {
     this.navCtrl.push(EncerrarPedidoPage, { itens: this.arrItensPedido });
   }
 }
+
+
+//{
+//  "_id": "5b2eebf5bf8af2428c8c41fd",
+//    "valor": 14,
+//      "descricao": "Heineken 600",
+//        "estabelecimento_id": "5b2ee02de9de172d98baf076",
+//          "imagem": "assets/imgs/Heineken.jpg",
+//            "__v": 0,
+//              "created": "2018-06-24T00:55:17.972Z"
+//}
+
+
+//{
+//  "usuario_id": "5b2ddebc2f2a7b271811b206",
+//    "usuarioresp_id": "5b2de0f12f2a7b271811b207",
+//      "produtosConsumo": [
+//        {
+//          "quantidade": 2,
+//          "produto_id": "5b2eebf5bf8af2428c8c41fd",
+//          "produto_descricao": "Heineken 600",
+//          "produto_valor": 12
+//        },
+//        {
+//          "quantidade": 2,
+//          "produto_id": "5b2eec70bf8af2428c8c41fe",
+//          "produto_descricao": "Brahma 600",
+//          "produto_valor": 12
+//        },
+//        {
+//          "quantidade": 2,
+//          "produto_id": "5b2eecbb7627223b2419c07e",
+//          "produto_descricao": "Skol 600",
+//          "produto_valor": 12
+//        }
+//      ]
+//}

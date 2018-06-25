@@ -41,6 +41,7 @@ import { LoadingService } from '../services/loading-service';
 import { MyErrorHandler } from '../handler/errorhandler';
 import { EncerrarPedidoPage } from '../pages/venda/buscaprodutos/encerrarpedido/encerrarpedido';
 import { CheckinProvider } from '../providers/checkin';
+import { ConsumoProvider } from '../providers/consumo';
 
 
 let config: SocketIoConfig = { 
@@ -109,7 +110,8 @@ let config: SocketIoConfig = {
     ProdutosProvider,
     MenuService,
     LoadingService,
-    CheckinProvider
+    CheckinProvider,
+    ConsumoProvider
   ]
 })
 export class AppModule {}

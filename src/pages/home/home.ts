@@ -52,8 +52,8 @@ export class HomePage {
         this.presentToast("Parabéns! Chekin realizado.");
     },
       (error) => {
-        console.log(error);        
-        if (error.error.message == "Usuário possui um check -in ativo.") {
+        console.log(error.error.message);        
+        if (error.error.message == "Usuário possui um check-in ativo.") {
           this.presentToast(error.error.message);
         } else {
           throw new Error();
@@ -86,11 +86,11 @@ export class HomePage {
  
 
   sendMessageConsumoMOCK(){
-    this.socket.emit("checkout", 'checkout realizado');
+    this.socket.emit("consumo", 'consumo realizado');    
   }
 
   sendMessageCheckoutMOCK(){
-    this.socket.emit("consumo", 'consumo realizado');
+    this.socket.emit("checkout", 'checkout realizado');
   }
 
 }
