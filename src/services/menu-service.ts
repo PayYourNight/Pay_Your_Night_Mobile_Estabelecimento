@@ -33,7 +33,7 @@ export class MenuService implements IService {
 
     getDataForTheme = () => {
       return {
-        "background": "assets/images/background/1.jpg",
+        "background": "assets/images/background/20.jpg",
         "image": "assets/images/logo/1.png",
         "title": "Pay Your Night",
         "description": "Por um mundo mais conectado e divertido!"
