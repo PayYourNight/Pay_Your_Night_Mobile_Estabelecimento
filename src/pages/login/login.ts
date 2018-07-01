@@ -3,15 +3,11 @@ import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login';
 import { HomePage } from '../home/home';
 
-//@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
-
-  //@Input() data: any;
-  //@Input() events: any;
 
   public data: any;
   public username: string;
@@ -55,9 +51,7 @@ export class LoginPage {
     if (this.validate()) {
       this.login.signin(this.username, this.password)
         .subscribe((data) => {
-          console.log(data);
           this.setStorage(data);
-          // this.setHeader(data);
           this.setPages();                 
         }, error => {
           console.log(error.error.message);
@@ -82,14 +76,12 @@ export class LoginPage {
   }
 
   setPages(): any {
-    //this.navCtrl.pop();
     this.navCtrl.setRoot(HomePage);
-    //this.navCtrl.popToRoot();
   }
 
   setStorage(data: any): any {
     localStorage.setItem('user', JSON.stringify(data.user));
-    localStorage.setItem('token', JSON.stringify(data.token));
+    localStorage.setItem('token', JSON.stringify(data.user.loginToken));
   }
 
   onForgot() {

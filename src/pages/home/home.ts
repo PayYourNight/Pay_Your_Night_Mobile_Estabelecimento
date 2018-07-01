@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { Socket } from 'ng-socket-io';
 import { CheckinProvider } from '../../providers/checkin';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import { ConsumoProvider } from '../../providers/consumo';
 
 @Component({
   selector: 'page-home',
@@ -24,7 +25,8 @@ export class HomePage {
     public navCtrl: NavController,
     private socket: Socket,
     private checkin: CheckinProvider,
-    private toastCtrl: ToastController) {
+    private toastCtrl: ToastController,
+    private consumo: ConsumoProvider) {
 
     //socket.emit('checkinConnect', {      
     //  user: this.user,      
@@ -85,7 +87,37 @@ export class HomePage {
 
  
 
-  sendMessageConsumoMOCK(){
+  sendMessageConsumoMOCK() {
+    this.consumo.addConsumo(JSON.stringify({  
+   "usuario_id": "5b2ddebc2f2a7b271811b206", 
+      "usuarioresp_id": "5b2de0f12f2a7b271811b207",
+      "produtosConsumo": [
+        {
+          "quantidade": 2,
+          "produto_id": "5b2eebf5bf8af2428c8c41fd",
+          "produto_descricao": "Heineken 600",
+          "produto_valor": 12
+        },
+        {
+          "quantidade": 2,
+          "produto_id": "5b2eec70bf8af2428c8c41fe",
+          "produto_descricao": "Brahma 600",
+          "produto_valor": 12
+        },
+        {
+          "quantidade": 2,
+          "produto_id": "5b2eecbb7627223b2419c07e",
+          "produto_descricao": "Skol 600",
+          "produto_valor": 12
+        }
+      ]
+    })).subscribe(
+      (data) => {
+        console.log(data);
+        (error) => {
+          console.log(error);
+        }
+      });
     this.socket.emit("consumo", 'consumo realizado');    
   }
 

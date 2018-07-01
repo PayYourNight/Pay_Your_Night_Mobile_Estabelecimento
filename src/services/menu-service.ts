@@ -23,11 +23,11 @@ export class MenuService implements IService {
     getAllThemes = (): Array<any> => {
       return [
         { "title": "Home", "theme": "listViews", "icon": "icon-home", "component": HomePage, "singlePage": true  },
-        { "title": "Check-in", "theme": "listViews", "icon": "icon-home", "component": CheckinPage, "singlePage": true  },
-        { "title": "Produtos", "theme": "listViews", "icon": "icon-home", "component": ProdutosPage, "singlePage": true  },
-        { "title": "Venda", "theme": "listViews", "icon": "icon-home", "component": VendaPage, "singlePage": true  },
-        { "title": "Check-out", "theme": "listViews", "icon": "icon-home", "component": CheckoutPage, "singlePage": true  },
-        { "title": "Configurações", "theme": "listViews", "icon": "icon-home", "component": ConfiguracoesPage, "singlePage": true}
+        { "title": "Check-in", "theme": "listViews", "icon": "icon-map-marker", "component": CheckinPage, "singlePage": true  },
+        { "title": "Produtos", "theme": "listViews", "icon": "icon-silverware", "component": ProdutosPage, "singlePage": true  },
+        { "title": "Venda", "theme": "listViews", "icon": "icon-cart", "component": VendaPage, "singlePage": true  },
+        { "title": "Check-out", "theme": "listViews", "icon": "icon-thumb-up", "component": CheckoutPage, "singlePage": true  },
+        { "title": "Configurações", "theme": "listViews", "icon": "icon-settings", "component": ConfiguracoesPage, "singlePage": true}
         ]
      };
 

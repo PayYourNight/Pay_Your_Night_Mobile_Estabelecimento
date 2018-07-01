@@ -11,7 +11,8 @@ export class LoginProvider {
   signin(usernameOrEmail, password){
     let credentials = {
       'usernameOrEmail': usernameOrEmail,
-      'password': password
+      'password': password,
+      'isEsbalecimentoApp': true
       };
 
     return this.http

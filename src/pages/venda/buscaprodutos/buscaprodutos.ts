@@ -13,9 +13,9 @@ export class BuscaProdutosVendaPage {
   data: any;
   arrProdutos: any = null;  
   arrItensPedido: any = [];
+  items: any = [];
 
   constructor(
-    //private produtos: ProdutosProvider,
     public navCtrl: NavController,
     public produtos: ProdutosProvider,
     private toastCtrl: ToastController) {
@@ -26,13 +26,14 @@ export class BuscaProdutosVendaPage {
   getProdutos() {
     this.produtos.getProdutos().subscribe((data) => {
       this.arrProdutos = data;
+      this.initializeItems();
     });
   }
 
   addproduto(produto) {
 
+    produto.isChecked = !produto.isChecked;
     this.arrItensPedido.push(produto);
-
     this.presentToast(produto.descricao);
   }
 
@@ -49,41 +50,18 @@ export class BuscaProdutosVendaPage {
   proximo() {
     this.navCtrl.push(EncerrarPedidoPage, { itens: this.arrItensPedido });
   }
+
+  initializeItems() {
+    this.items = this.arrProdutos;
+  }
+
+  getItems(ev: any) {
+    this.initializeItems();
+    const val = ev.target.value;
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        return (item.descricao.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
 }
-
-
-//{
-//  "_id": "5b2eebf5bf8af2428c8c41fd",
-//    "valor": 14,
-//      "descricao": "Heineken 600",
-//        "estabelecimento_id": "5b2ee02de9de172d98baf076",
-//          "imagem": "assets/imgs/Heineken.jpg",
-//            "__v": 0,
-//              "created": "2018-06-24T00:55:17.972Z"
-//}
-
-
-//{
-//  "usuario_id": "5b2ddebc2f2a7b271811b206",
-//    "usuarioresp_id": "5b2de0f12f2a7b271811b207",
-//      "produtosConsumo": [
-//        {
-//          "quantidade": 2,
-//          "produto_id": "5b2eebf5bf8af2428c8c41fd",
-//          "produto_descricao": "Heineken 600",
-//          "produto_valor": 12
-//        },
-//        {
-//          "quantidade": 2,
-//          "produto_id": "5b2eec70bf8af2428c8c41fe",
-//          "produto_descricao": "Brahma 600",
-//          "produto_valor": 12
-//        },
-//        {
-//          "quantidade": 2,
-//          "produto_id": "5b2eecbb7627223b2419c07e",
-//          "produto_descricao": "Skol 600",
-//          "produto_valor": 12
-//        }
-//      ]
-//}

@@ -7,29 +7,32 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>  
-  <ion-list>
-    <ion-item *ngFor="let produto of arrProdutos" text-wrap>
-      
-        <h2>{{produto.produto_descricao}}</h2>
-        <h4><small>{{produto.produto_valor | number:'1.1-5'}}</small></h4>
-        <!--<div item-content>-->
-          <!--<ion-select [(ngModel)]="produto.quantidade" interface="popover">
-            <ion-option value="1">1</ion-option>
-            <ion-option value="2">2</ion-option>
-            <ion-option value="3">3</ion-option>
-            <ion-option value="4">4</ion-option>
-            <ion-option value="5">5</ion-option>
-            <ion-option value="6">6</ion-option>
-            <ion-option value="7">7</ion-option>
-            <ion-option value="8">8</ion-option>
-            <ion-option value="9">9</ion-option>
-          </ion-select>-->
-        <!--</div>-->
-    </ion-item>
-  </ion-list>
+      <ion-row *ngFor="let produto of arrProdutos" ion-list>
+        <ion-card>
+          <ion-card-content>
+            <ion-col width-50>
+              <h2>{{produto.produto_descricao}}</h2>
+              <h4>{{produto.produto_valor | number:'1.1-5'}}</h4>
+            </ion-col>
+            <ion-col width-50>
+              <ion-select [(ngModel)]="produto.quantidade" interface="popover" float-right class="selector">
+                <ion-option value="1">1</ion-option>
+                <ion-option value="2">2</ion-option>
+                <ion-option value="3">3</ion-option>
+                <ion-option value="4">4</ion-option>
+                <ion-option value="5">5</ion-option>
+                <ion-option value="6">6</ion-option>
+                <ion-option value="7">7</ion-option>
+                <ion-option value="8">8</ion-option>
+                <ion-option value="9">9</ion-option>
+              </ion-select>
+            </ion-col>
+            <ion-label error-field color="red" no-margin *ngIf="produto.isQtdInvalida">Selecionar a quantidade do produto.</ion-label>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
 </ion-content>
 <ion-footer padding>
-  <button ion-button full icon-left (click)="finalizar()"><ion-icon name="qr-scanner"></ion-icon>Finalizar</button>
+  <button ion-button full icon-left (click)="finalizar()">Finalizar</button>
 </ion-footer>

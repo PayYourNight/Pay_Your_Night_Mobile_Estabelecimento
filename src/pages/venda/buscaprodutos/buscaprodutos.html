@@ -10,8 +10,8 @@
 <ion-content padding>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let produto of arrProdutos" detail-push text-wrap>
-      <a ion-item no-lines (click)="addproduto(produto)">
+    <ion-item *ngFor="let produto of items" detail-push text-wrap>
+      <a ion-item no-lines (click)="addproduto(produto)" >
         <ion-avatar item-start>
           <img src="{{produto.imagem}}">
         </ion-avatar>
@@ -20,7 +20,7 @@
       </a>
     </ion-item>
   </ion-list>
- 
+
 </ion-content>
 <ion-footer padding>
   <button ion-button full icon-left [disabled]="!arrProdutos" (click)="proximo()"><ion-icon name="qr-scanner"></ion-icon>Próximo</button>

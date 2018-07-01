@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, NavController } from 'ionic-angular';
+import { ViewController, NavController, AlertController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular/navigation/nav-params';
 import { ConsumoProvider } from '../../../../providers/consumo';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
@@ -12,7 +12,6 @@ import { Socket } from 'ng-socket-io';
 export class EncerrarPedidoPage {
   //TODO
   usuario_id = "5b2ddebc2f2a7b271811b206";
-  usuarioresp_id = "5b2ddebc2f2a7b271811b206";
   arrProdutos: any = null;
   
 
@@ -21,16 +20,16 @@ export class EncerrarPedidoPage {
     public params: NavParams,
     private consumo: ConsumoProvider,
     private toastCtrl: ToastController,
-    private socket: Socket
+    private socket: Socket,
+    private alertCtrl: AlertController
   ) {    
     this.arrProdutos = params.get("itens");
     var arrItensPedidoSelecionados: any = [];
 
     this.arrProdutos.forEach(function (item) {
-      console.log(item);
       arrItensPedidoSelecionados.push({
         isQtdInvalida: false,
-        quantidade: 5,
+        quantidade: 0,
         produto_id: item._id,
         produto_descricao: item.descricao,
         produto_valor: item.valor
@@ -41,26 +40,48 @@ export class EncerrarPedidoPage {
   }
 
   finalizar() {
-    //if (this.validar()) {
-      
+    if (this.ehValido()) {
+      this.presentConfirm();
+    }
+  }
+
+  fazerPedido() {
     this.consumo.addConsumo({
       usuario_id: this.usuario_id,
-      //TODO
-      usuarioresp_id: this.usuarioresp_id,
-        produtosConsumo: this.arrProdutos
-      }).subscribe(
-        (data) => {
-          console.log(data);
-          this.socket.emit("consumo", 'consumo realizado');    
-          this.presentToast("Pedido incluído com sucesso. :)")
-          this.navCtrl.popToRoot()
-        },
-        (error) => {
-          this.presentToast(error.error.message)
-        }
-      );
+      produtosConsumo: this.arrProdutos
+    }).subscribe(
+      (data) => {
+        console.log(data);
+        this.socket.emit("consumo", 'consumo realizado');
+        this.presentToast("Pedido incluído com sucesso. :)")
+        this.navCtrl.popToRoot()
+      },
+      (error) => {
+        this.presentToast(error.error.message)
+      });
+  }
 
-    //}
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirmação',
+      message: 'Deseja finalizar o pedido?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Finalizar',
+          handler: () => {
+            this.fazerPedido();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   presentToast(descricao) {
@@ -73,12 +94,16 @@ export class EncerrarPedidoPage {
     toast.present();
   }
 
-  validar(): any {
+  ehValido(): boolean {
+    var result: boolean = true;
     this.arrProdutos.forEach(function (item) {
       if (item.quantidade == "" || item.quantidade == 0) {
         item.isQtdInvalida = true;
+        result = false;
       }
     });
+
+    return result;
   }
 }
 
