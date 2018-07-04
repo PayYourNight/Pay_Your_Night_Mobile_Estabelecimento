@@ -42,11 +42,13 @@ import { MyErrorHandler } from '../handler/errorhandler';
 import { EncerrarPedidoPage } from '../pages/venda/buscaprodutos/encerrarpedido/encerrarpedido';
 import { CheckinProvider } from '../providers/checkin';
 import { ConsumoProvider } from '../providers/consumo';
+import { GlobalsProvider } from '../providers/globals';
 
 
 let config: SocketIoConfig = { 
    //url: "http://10.0.2.2:3000/",
-  url: "http://localhost:3000/",
+  //url: "http://localhost:3000/",
+    url: "https://intense-journey-43070.herokuapp.com",
   options: {}
 };
 
@@ -111,7 +113,8 @@ let config: SocketIoConfig = {
     MenuService,
     LoadingService,
     CheckinProvider,
-    ConsumoProvider
+    ConsumoProvider,
+    GlobalsProvider
   ]
 })
 export class AppModule {}

@@ -3,15 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { GlobalsProvider } from './globals';
 
 @Injectable()
 export class CheckinProvider {
   private user: any;
   private token: String;
-  private apiUrl = 'http://localhost:3000/api/checkin';
+  private apiUrl = '/api/checkin';
   
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private globals: GlobalsProvider) {
     console.log('Hello CheckinProvider Provider');
     this.user = JSON.parse(localStorage.getItem("user"));
     this.token = JSON.parse(localStorage.getItem("token"));
@@ -33,6 +34,6 @@ export class CheckinProvider {
       })
     };
 
-    return this.http.post(this.apiUrl, JSON.stringify(checkin), httpOptions);
+    return this.http.post(this.globals.baseUrl + this.apiUrl, JSON.stringify(checkin), httpOptions);
   }
 }
