@@ -4,14 +4,15 @@ import { Produto } from '../interfaces/produto';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { GlobalsProvider } from '../globals';
 
 @Injectable()
 export class ProdutosProvider {
   private user: any; 
   private token: String; 
-  private apiUrl = 'http://localhost:3000/api/produtos';
+  private apiUrl = '/api/produtos';
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private globals: GlobalsProvider) {
     console.log('Hello ProdutosProvider Provider');
     this.user = JSON.parse(localStorage.getItem("user"));
     this.token = JSON.parse(localStorage.getItem("token"));
@@ -56,7 +57,7 @@ export class ProdutosProvider {
       })
     };
 
-    return this.http.get(this.apiUrl + "/?estabelecimentoid=" + estabelecimento_id, httpOptions);
+    return this.http.get(this.globals.baseUrl + this.apiUrl + "/?estabelecimentoid=" + estabelecimento_id, httpOptions);
   }
   
   extractData(res: Response) {    
