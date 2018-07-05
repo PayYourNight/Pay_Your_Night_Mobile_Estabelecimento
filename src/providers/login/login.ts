@@ -9,17 +9,13 @@ export class LoginProvider {
   
   constructor(public http: HttpClient, private globals: GlobalsProvider) {}
   
-  signin(usernameOrEmail, password){
+  signin(usernameOrEmail, password) {
     let credentials = {
       'usernameOrEmail': usernameOrEmail,
       'password': password,
       'isEsbalecimentoApp': true
-      };
+    };
 
-    return this.http
-      .post(this.globals.baseUrl + '/api/auth/authenticate', credentials);
-
-  signout(){
-    
+    return this.http.post(this.globals.baseUrl + '/api/auth/authenticate', credentials);
   }
 }
