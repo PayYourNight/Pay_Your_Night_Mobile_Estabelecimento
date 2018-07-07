@@ -20,6 +20,7 @@ export class ConsumoProvider {
 
   //TODO
   addConsumo(consumo) {
+    consumo = JSON.parse(consumo);
     consumo["usuarioresp_id"] = this.user._id;
     console.log('realizando busca de consumo');
     const httpOptions = {
@@ -29,7 +30,7 @@ export class ConsumoProvider {
       })
     };
 
-    return this.http.post(this.globals.baseUrl + this.apiUrl, consumo, httpOptions);
+    return this.http.post(this.globals.baseUrl + this.apiUrl, JSON.stringify(consumo), httpOptions);
 
   }
 }

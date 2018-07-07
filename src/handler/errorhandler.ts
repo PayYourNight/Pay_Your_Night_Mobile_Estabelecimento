@@ -1,6 +1,7 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 import { IonicErrorHandler } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
+import * as Sentry from 'sentry-cordova';
 
 @Injectable()
 export class MyErrorHandler extends IonicErrorHandler implements ErrorHandler {
@@ -11,6 +12,7 @@ export class MyErrorHandler extends IonicErrorHandler implements ErrorHandler {
 
   handleError(err: any): void {
     console.log('Error: ' + err);
+    Sentry.captureException(err.originalError || err);
     //super.handleError(err);
     this.presentToast();
   }

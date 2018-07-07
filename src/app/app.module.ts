@@ -5,6 +5,9 @@ import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import * as Sentry from 'sentry-cordova';
+
+
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -51,6 +54,9 @@ let config: SocketIoConfig = {
     url: "https://intense-journey-43070.herokuapp.com",
   options: {}
 };
+
+Sentry.init({ dsn: 'https://bcb8b1b529be4cd4ae5b4f506b438625@sentry.io/1237024' });
+
 
 @NgModule({
   declarations: [
