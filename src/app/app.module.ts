@@ -18,7 +18,6 @@ import { HomePage } from '../pages/home/home';
 
 import { CheckinPage } from '../pages/checkin/checkin';
 // import { QrcodeCheckinPage } from '../pages/checkin/qrcode-checkin';
-import { CheckinService } from '../pages/checkin/checkin.service';
 
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { ProdutosPage } from '../pages/produtos/produtos';
@@ -112,8 +111,7 @@ Sentry.init({ dsn: 'https://bcb8b1b529be4cd4ae5b4f506b438625@sentry.io/1237024' 
     SplashScreen,
     //{provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: ErrorHandler, useClass: MyErrorHandler },
-    BarcodeScanner,
-    CheckinService,
+    BarcodeScanner,    
     LoginProvider,
     ProdutosProvider,
     MenuService,

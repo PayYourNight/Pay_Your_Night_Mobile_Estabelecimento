@@ -15,27 +15,27 @@ export class QrcodeReaderConsumoPage {
     public viewCtrl: ViewController,
     public navCtrl: NavController
   ) {
+
   }
 
   scanCode() {
     this.barcodeScanner.scan()
       .then(barcodeData => {
       if (barcodeData) {
-        console.log('leitura de codigo de barra efeituada');
-        console.log(barcodeData);
-        //var id = barcodeData.split("|")[0];
 
+        console.log(barcodeData);
         this.abrirBuscaProdutos(barcodeData);
+
       }
-    }, (err) => {
-      console.log('Error: ', err);
+      }, (err) => {
+        throw new Error(err);
     });
   }
 
   abrirBuscaProdutos(barcodeData: any): any {
     var usuario_id = barcodeData.split("|")[0];
     this.navCtrl.push(BuscaProdutosVendaPage, {
-      usuario_id: barcodeData.usuario_id
+      usuario_id: usuario_id
     });
   }
 }
