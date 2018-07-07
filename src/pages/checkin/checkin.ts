@@ -24,13 +24,13 @@ export class CheckinPage {
 
   }
 
-  scanCode() {
-    this.barcodeScanner.scan().then(barcodeData => {
-      //this.scannedCode = barcodeData.text;
-    }, (err) => {
-        console.log('Error: ', err);
-    });
-  }
+  //scanCode() {
+  //  this.barcodeScanner.scan().then(barcodeData => {
+  //    //this.scannedCode = barcodeData.text;
+  //  }, (err) => {
+  //      console.log('Error: ', err);
+  //  });
+  //}
 
   scanCode() {
     this.barcodeScanner.scan().then((barcodeData) => {
