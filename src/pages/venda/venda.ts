@@ -9,17 +9,30 @@ import { BuscaProdutosVendaPage } from './buscaprodutos/buscaprodutos';
   templateUrl: 'venda.html'
 })
 export class VendaPage {
+  user_id: string;
 
- 
-  constructor(public navCtrl: NavController) { }
+  constructor(
+    public navCtrl: NavController,
+    private barcodeScanner: BarcodeScanner, 
+  ) { }
+
+  scanCode() {
+    this.barcodeScanner.scan().then((barcodeData) => {
+      console.log(barcodeData);
+      var code: any = barcodeData;
+      var split: Array<string> = code.split("|");
+      this.user_id = split[0];
+      this.buscarProdutos();
+    }, (err) => {
+      throw new Error(err);
+    });
+  }
 
   openQRcodePage() {
     this.navCtrl.push(QrcodeReaderConsumoPage);
   }
 
-  simularLeitura(): any {
-    this.navCtrl.push(BuscaProdutosVendaPage);
-  }
-
-  
+  buscarProdutos(): any {
+    this.navCtrl.push(BuscaProdutosVendaPage, { usuario: this.user_id });
+  } 
 }

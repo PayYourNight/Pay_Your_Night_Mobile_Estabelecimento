@@ -11,10 +11,9 @@ import { Socket } from 'ng-socket-io';
 })
 export class EncerrarPedidoPage {
   //TODO
-  usuario_id = "5b2ddebc2f2a7b271811b206";
+  usuario_id: string; 
   arrProdutos: any = null;
-  
-
+ 
   constructor(    
     public navCtrl: NavController,
     public params: NavParams,
@@ -24,6 +23,8 @@ export class EncerrarPedidoPage {
     private alertCtrl: AlertController
   ) {    
     this.arrProdutos = params.get("itens");
+    this.usuario_id = params.get("usuario");
+
     var arrItensPedidoSelecionados: any = [];
 
     this.arrProdutos.forEach(function (item) {

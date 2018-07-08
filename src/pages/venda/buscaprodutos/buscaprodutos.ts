@@ -3,6 +3,7 @@ import { ViewController, NavController } from 'ionic-angular';
 import { ProdutosProvider } from '../../../providers/produtos/produtos'
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { EncerrarPedidoPage } from './encerrarpedido/encerrarpedido';
+import { NavParams } from 'ionic-angular/navigation/nav-params';
 
 @Component({
   selector: 'page-buscaprodutos',
@@ -14,11 +15,15 @@ export class BuscaProdutosVendaPage {
   arrProdutos: any = null;  
   arrItensPedido: any = [];
   items: any = [];
+  usuario: string;
 
   constructor(
     public navCtrl: NavController,
+    public navParam: NavParams,
     public produtos: ProdutosProvider,
     private toastCtrl: ToastController) {
+
+    this.usuario = navParam.get("usuario");
 
     this.getProdutos();
   }
@@ -48,7 +53,7 @@ export class BuscaProdutosVendaPage {
   }
 
   proximo() {
-    this.navCtrl.push(EncerrarPedidoPage, { itens: this.arrItensPedido });
+    this.navCtrl.push(EncerrarPedidoPage, { itens: this.arrItensPedido, usuario: this.usuario });
   }
 
   initializeItems() {

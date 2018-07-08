@@ -24,14 +24,6 @@ export class CheckinPage {
 
   }
 
-  //scanCode() {
-  //  this.barcodeScanner.scan().then(barcodeData => {
-  //    //this.scannedCode = barcodeData.text;
-  //  }, (err) => {
-  //      console.log('Error: ', err);
-  //  });
-  //}
-
   scanCode() {
     this.barcodeScanner.scan().then((barcodeData) => {
       console.log(barcodeData);
@@ -77,8 +69,8 @@ export class CheckinPage {
       text: 'check-in realizado!',
       created: Date.now(),
       estabelecimento: {
-        estabelecimento_id: '28383794-7ab5-41a8-8272-9fc18f8df786',
-        estabelecimento_nome: 'Estabelecimento Teste Socket'
+        estabelecimento_id: this.user.estabelecimento_id,
+        estabelecimento_nome: this.user.estabelecimento_nome
       }
     });
   }

@@ -45,6 +45,7 @@ import { EncerrarPedidoPage } from '../pages/venda/buscaprodutos/encerrarpedido/
 import { CheckinProvider } from '../providers/checkin';
 import { ConsumoProvider } from '../providers/consumo';
 import { GlobalsProvider } from '../providers/globals';
+import { CheckoutProvider } from '../providers/checkout/checkout';
 
 
 let config: SocketIoConfig = { 
@@ -118,7 +119,8 @@ Sentry.init({ dsn: 'https://bcb8b1b529be4cd4ae5b4f506b438625@sentry.io/1237024' 
     LoadingService,
     CheckinProvider,
     ConsumoProvider,
-    GlobalsProvider
+    GlobalsProvider,
+    CheckoutProvider
   ]
 })
 export class AppModule {}
