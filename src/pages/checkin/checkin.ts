@@ -25,15 +25,14 @@ export class CheckinPage {
   }
 
   scanCode() {
-
     try {
       this.barcodeScanner.scan()
         .then((barcodeData) => {
-        console.log(barcodeData);
-        var code: any = barcodeData;
-        var split: Array<string> = code.split("|");
-        this.user_id = split[0];
-        this.gravarCheckin();
+          console.log(barcodeData.text);
+          var code: any = barcodeData.text;
+          var split: Array<string> = code.split("|");
+          this.user_id = split[0];
+          this.gravarCheckin();
       }, (err) => {
         throw new Error(err);
       });
