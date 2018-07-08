@@ -25,15 +25,22 @@ export class CheckinPage {
   }
 
   scanCode() {
-    this.barcodeScanner.scan().then((barcodeData) => {
-      console.log(barcodeData);
-      var code: any = barcodeData;
-      var split: Array<string> = code.split("|");
-      this.user_id = split[0];
-      this.gravarCheckin();
-    }, (err) => {
-      throw new Error(err);
-    });
+
+    try {
+      this.barcodeScanner.scan()
+        .then((barcodeData) => {
+        console.log(barcodeData);
+        var code: any = barcodeData;
+        var split: Array<string> = code.split("|");
+        this.user_id = split[0];
+        this.gravarCheckin();
+      }, (err) => {
+        throw new Error(err);
+      });
+    }
+    catch (e) {
+      throw new Error(e);
+    }
   }
 
   gravarCheckin(): any {
