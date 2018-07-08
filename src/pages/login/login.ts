@@ -49,7 +49,7 @@ export class LoginPage {
 
   onLogin() {
     if (this.validate()) {
-      this.login.signin(this.username, this.password)
+      this.login.signin(this.username.toLowerCase(), this.password)
         .subscribe((data) => {
           this.setStorage(data);
           this.setPages();                 

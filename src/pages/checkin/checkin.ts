@@ -4,6 +4,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { CheckinProvider } from '../../providers/checkin';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { Socket } from 'ng-socket-io';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 @Component({
   selector: 'page-checkin',
@@ -17,7 +18,8 @@ export class CheckinPage {
     public viewCtrl: ViewController,
     private socket: Socket,
     private checkin: CheckinProvider,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private alertCtrl: AlertController
   ) {
 
     this.user = localStorage.getItem('user');
@@ -29,10 +31,13 @@ export class CheckinPage {
       this.barcodeScanner.scan()
         .then((barcodeData) => {
           console.log(barcodeData.text);
-          var code: any = barcodeData.text;
-          var split: Array<string> = code.split("|");
-          this.user_id = split[0];
-          this.gravarCheckin();
+          if (barcodeData) {
+            var code: string = barcodeData.text;
+            this.presentAlert(code);
+            var split: Array<string> = code.split("|");
+            this.user_id = split[0];
+            this.gravarCheckin();
+          }
       }, (err) => {
         throw new Error(err);
       });
@@ -40,6 +45,15 @@ export class CheckinPage {
     catch (e) {
       throw new Error(e);
     }
+  }
+
+  presentAlert(msg) {
+    let alert = this.alertCtrl.create({
+      title: 'error test',
+      subTitle: msg,
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
   gravarCheckin(): any {
