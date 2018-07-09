@@ -2,17 +2,21 @@ import { ErrorHandler, Injectable } from '@angular/core';
 import { IonicErrorHandler } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import * as Sentry from 'sentry-cordova';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 @Injectable()
 export class MyErrorHandler extends IonicErrorHandler implements ErrorHandler {
 
-  constructor(private toastCtrl: ToastController) {
+  constructor(
+    private toastCtrl: ToastController,
+    private alertCtrl: AlertController) {
     super();
   }
 
   handleError(err: any): void {
     console.log('Error: ' + err);
     Sentry.captureException(err);
+    this.presentAlert(err.message);
     //super.handleError(err);
     this.presentToast();
   }
@@ -26,4 +30,14 @@ export class MyErrorHandler extends IonicErrorHandler implements ErrorHandler {
 
     toast.present();
   }
+
+  presentAlert(msg) {
+    let alert = this.alertCtrl.create({
+      title: 'Low battery',
+      subTitle: msg,
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
 }

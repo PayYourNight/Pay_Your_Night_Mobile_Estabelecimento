@@ -63,8 +63,7 @@ export class CheckinPage {
         this.emitirSocketCheckin();
         this.presentToast("Parabéns! Chekin realizado.");
       },
-      (error) => {
-        console.log(error.error.message);
+      (error) => {        
         if (error.error.message == "Usuário possui um check-in ativo.") {
           this.presentToast(error.error.message);
         } else {
