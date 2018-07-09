@@ -17,9 +17,8 @@ export class VendaPage {
   ) { }
 
   scanCode() {
-    this.barcodeScanner.scan().then((barcodeData) => {
-      console.log(barcodeData);
-      var code: any = barcodeData;
+    this.barcodeScanner.scan().then((barcodeData) => {      
+      var code: any = barcodeData.text;
       var split: Array<string> = code.split("|");
       this.user_id = split[0];
       this.buscarProdutos();
