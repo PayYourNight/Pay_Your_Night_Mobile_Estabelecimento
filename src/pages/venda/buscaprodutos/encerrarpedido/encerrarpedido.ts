@@ -58,8 +58,8 @@ export class EncerrarPedidoPage {
   fazerPedido() {
     //this.loading.present();
     this.consumo.addConsumo({
-      usuario_id: this.usuario_id,
-      produtosConsumo: this.arrProdutos
+      usuario_id: this.usuario_id//,
+      //produtosConsumo: this.arrProdutos
     }).subscribe(
       (data) => {
         this.socket.emit("consumo", 'consumo realizado');
