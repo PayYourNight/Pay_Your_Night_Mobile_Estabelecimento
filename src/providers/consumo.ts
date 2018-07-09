@@ -28,13 +28,11 @@ export class ConsumoProvider {
     console.log('realizando busca de consumo');
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'//,
-    //    'Authorization': JSON.stringify(this.token || {})
+        'Content-Type': 'application/json',
+        'Authorization': JSON.stringify(this.token || {})
       })
     };
-
-    this.presentAlert(JSON.stringify(consumo));
-
+    
     return this.http.post(this.globals.baseUrl + this.apiUrl, JSON.stringify(consumo), httpOptions);
   }
 

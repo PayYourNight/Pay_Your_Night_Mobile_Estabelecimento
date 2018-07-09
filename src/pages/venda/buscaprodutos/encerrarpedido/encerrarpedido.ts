@@ -5,6 +5,7 @@ import { ConsumoProvider } from '../../../../providers/consumo';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { Socket } from 'ng-socket-io';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { VendaPage } from '../../venda';
 
 @Component({
   selector: 'page-encerrarpedido',
@@ -44,6 +45,7 @@ export class EncerrarPedidoPage {
     this.arrProdutos = arrItensPedidoSelecionados;
 
     this.loading = this.loadingCtrl.create({
+      spinner: 'dots',
       content: 'Aguarde...'
     });
 
@@ -56,19 +58,20 @@ export class EncerrarPedidoPage {
   }
 
   fazerPedido() {
-    //this.loading.present();
+    this.loading.present();
     this.consumo.addConsumo({
       usuario_id: this.usuario_id,
       produtosConsumo: this.arrProdutos
     }).subscribe(
       (data) => {
         this.socket.emit("consumo", 'consumo realizado');
-        this.presentToast("Pedido incluído com sucesso. :)")
+        this.presentToast("Pedido incluído com sucesso. :)");
+        this.navCtrl.popTo(VendaPage);
       },
       (error) => {
         throw new Error(error.message);
       });
-    //this.loading.dismiss();
+    this.loading.dismiss();
   }
 
   presentConfirm() {
