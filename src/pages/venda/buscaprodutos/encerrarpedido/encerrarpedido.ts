@@ -4,12 +4,14 @@ import { NavParams } from 'ionic-angular/navigation/nav-params';
 import { ConsumoProvider } from '../../../../providers/consumo';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { Socket } from 'ng-socket-io';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 @Component({
   selector: 'page-encerrarpedido',
   templateUrl: 'encerrarpedido.html'
 })
 export class EncerrarPedidoPage {
+  loading: any;
   //TODO
   usuario_id: string; 
   arrProdutos: any = null;
@@ -20,7 +22,8 @@ export class EncerrarPedidoPage {
     private consumo: ConsumoProvider,
     private toastCtrl: ToastController,
     private socket: Socket,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    public loadingCtrl: LoadingController
   ) {    
     this.arrProdutos = params.get("itens");
     this.usuario_id = params.get("usuario");
@@ -38,6 +41,11 @@ export class EncerrarPedidoPage {
     });
 
     this.arrProdutos = arrItensPedidoSelecionados;
+
+    this.loading = this.loadingCtrl.create({
+      content: 'Aguarde...'
+    });
+
   }
 
   finalizar() {
@@ -47,6 +55,7 @@ export class EncerrarPedidoPage {
   }
 
   fazerPedido() {
+    this.loading.present();
     this.consumo.addConsumo({
       usuario_id: this.usuario_id,
       produtosConsumo: this.arrProdutos
@@ -58,8 +67,11 @@ export class EncerrarPedidoPage {
         this.navCtrl.popToRoot()
       },
       (error) => {
-        this.presentToast(error.error.message)
+        this.loading.dismiss();
+        this.presentToast(error.error.message);
       });
+
+    this.loading.dismiss();
   }
 
   presentConfirm() {
