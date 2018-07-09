@@ -11,7 +11,6 @@ export class ConsumoProvider {
   private token: String;
   private apiUrl = '/api/consumo';
 
-
   constructor(public http: HttpClient, private globals: GlobalsProvider) {
     console.log('Hello CheckinProvider Provider');
     this.user = JSON.parse(localStorage.getItem("user"));
@@ -31,6 +30,5 @@ export class ConsumoProvider {
     };
 
     return this.http.post(this.globals.baseUrl + this.apiUrl, JSON.stringify(consumo), httpOptions);
-
   }
 }

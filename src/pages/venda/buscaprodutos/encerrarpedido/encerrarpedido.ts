@@ -26,7 +26,10 @@ export class EncerrarPedidoPage {
     public loadingCtrl: LoadingController
   ) {    
     this.arrProdutos = params.get("itens");
+    
     this.usuario_id = params.get("usuario");
+
+    this.presentToast(this.usuario_id);
 
     var arrItensPedidoSelecionados: any = [];
 
@@ -55,23 +58,20 @@ export class EncerrarPedidoPage {
   }
 
   fazerPedido() {
-    this.loading.present();
+    //this.loading.present();
     this.consumo.addConsumo({
       usuario_id: this.usuario_id,
       produtosConsumo: this.arrProdutos
     }).subscribe(
       (data) => {
-        console.log(data);
         this.socket.emit("consumo", 'consumo realizado');
         this.presentToast("Pedido incluído com sucesso. :)")
-        this.navCtrl.popToRoot()
       },
       (error) => {
-        this.loading.dismiss();
-        this.presentToast(error.error.message);
+        //this.loading.dismiss();
+        throw new Error(error);
       });
-
-    this.loading.dismiss();
+    //this.loading.dismiss();
   }
 
   presentConfirm() {
