@@ -29,8 +29,6 @@ export class EncerrarPedidoPage {
     
     this.usuario_id = params.get("usuario");
 
-    this.presentToast(this.usuario_id);
-
     var arrItensPedidoSelecionados: any = [];
 
     this.arrProdutos.forEach(function (item) {
@@ -68,8 +66,7 @@ export class EncerrarPedidoPage {
         this.presentToast("Pedido incluído com sucesso. :)")
       },
       (error) => {
-        //this.loading.dismiss();
-        throw new Error(error);
+        throw new Error(error.message);
       });
     //this.loading.dismiss();
   }

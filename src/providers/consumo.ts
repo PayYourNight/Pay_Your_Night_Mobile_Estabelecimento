@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { GlobalsProvider } from './globals';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 @Injectable()
 export class ConsumoProvider {
@@ -11,7 +12,10 @@ export class ConsumoProvider {
   private token: String;
   private apiUrl = '/api/consumo';
 
-  constructor(public http: HttpClient, private globals: GlobalsProvider) {
+  constructor(
+    public http: HttpClient,
+    private globals: GlobalsProvider,
+    private alertCtrl: AlertController) {
     console.log('Hello CheckinProvider Provider');
     this.user = JSON.parse(localStorage.getItem("user"));
     this.token = JSON.parse(localStorage.getItem("token"));
@@ -29,6 +33,17 @@ export class ConsumoProvider {
       })
     };
 
-    return this.http.post(this.globals.baseUrl + this.apiUrl, JSON.stringify(consumo), httpOptions);
+    this.presentAlert(JSON.stringify(consumo));
+
+    return this.http.post(this.globals.baseUrl + this.apiUrl, JSON.stringify(consumo));
+  }
+
+  presentAlert(msg) {
+    let alert = this.alertCtrl.create({
+      title: 'Erro',
+      subTitle: msg,
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 }
