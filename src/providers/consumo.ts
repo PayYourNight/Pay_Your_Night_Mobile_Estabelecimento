@@ -35,7 +35,7 @@ export class ConsumoProvider {
 
     this.presentAlert(JSON.stringify(consumo));
 
-    return this.http.post(this.globals.baseUrl + this.apiUrl, JSON.stringify(consumo));
+    return this.http.post(this.globals.baseUrl + this.apiUrl, JSON.stringify(consumo), httpOptions);
   }
 
   presentAlert(msg) {
