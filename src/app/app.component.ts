@@ -8,10 +8,8 @@ import { CheckinPage } from '../pages/checkin/checkin';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { ProdutosPage } from '../pages/produtos/produtos';
 import { VendaPage } from '../pages/venda/venda';
-// import { WelcomePage } from '../pages/welcome/welcome';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { LoginPage } from '../pages/login/login';
-import { WelcomePage } from '../pages/welcome/welcome';
 import { MenuService } from '../services/menu-service';
 import { IService } from '../services/IService';
 
@@ -53,29 +51,11 @@ export class MyApp {
     });
   }
 
-  // openPage(page) {
-  //   this.nav.setRoot(page.component);
-  // }
-
   openPage(page) {
     if (page.singlePage) {
         this.menu.open();
       this.nav.push(page.component);
     }
-    // close the menu when clicking a link from the menu
-    // navigate to the new page if it is not the current page
-    //if (page.singlePage) {
-    //    this.menu.open();
-    //    this.nav.push(this.getPageForOpen(page.theme), {
-    //      service: this.getServiceForPage(page.theme),
-    //      page: page,
-    //      componentName: page.theme
-    //    });
-    //} else {
-    //  this.nav.setRoot("ItemsPage", {
-    //    componentName: page.theme
-    //  });
-    //}
   }
 
   getPageForOpen(value: string): any {
