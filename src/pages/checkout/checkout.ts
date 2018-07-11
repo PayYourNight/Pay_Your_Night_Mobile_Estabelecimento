@@ -18,12 +18,16 @@ export class CheckoutPage {
     public viewCtrl: ViewController,
     private checkout: CheckoutProvider,
     private alertCtrl: AlertController,
-    private socket: Socket) { }
+    private socket: Socket) {
+
+
+  }
   
   scanCode() {
     this.barcodeScanner.scan().then(
       (barcodeData) => {
-        this.usuario_id = barcodeData.text;        
+        this.usuario_id = barcodeData.text;
+        this.presentAlert(this.usuario_id);
         this.doCheckout();
       },
       (err) => {

@@ -29,8 +29,7 @@ export class CheckinPage {
   scanCode() {
     try {
       this.barcodeScanner.scan()
-        .then((barcodeData) => {
-          console.log(barcodeData.text);
+        .then((barcodeData) => {          
           if (barcodeData) {
             var code: string = barcodeData.text;
             this.presentAlert(code);
