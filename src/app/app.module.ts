@@ -13,7 +13,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { MyApp } from './app.component';
-import { WelcomePage } from '../pages/welcome/welcome'
 import { HomePage } from '../pages/home/home';
 
 import { CheckinPage } from '../pages/checkin/checkin';
@@ -60,8 +59,7 @@ Sentry.init({ dsn: 'https://bcb8b1b529be4cd4ae5b4f506b438625@sentry.io/1237024' 
 
 @NgModule({
   declarations: [
-    MyApp,
-    WelcomePage,
+    MyApp,    
     LoginPage,
     RegisterPage,
     HomePage,    
@@ -89,8 +87,7 @@ Sentry.init({ dsn: 'https://bcb8b1b529be4cd4ae5b4f506b438625@sentry.io/1237024' 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    WelcomePage,
+    MyApp,    
     LoginPage,
     RegisterPage,
     HomePage,
@@ -109,8 +106,7 @@ Sentry.init({ dsn: 'https://bcb8b1b529be4cd4ae5b4f506b438625@sentry.io/1237024' 
   ],
   providers: [
     StatusBar,
-    SplashScreen,
-    //{provide: ErrorHandler, useClass: IonicErrorHandler},
+    SplashScreen,    
     { provide: ErrorHandler, useClass: MyErrorHandler },
     BarcodeScanner,    
     LoginProvider,
