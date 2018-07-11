@@ -17,7 +17,7 @@ export class CheckoutProvider {
       usuarioresp_id: this.usuario._id
     };
 
-    return this.http.post(this.globals.baseUrl + "/api/checkouts", JSON.stringify(body));
+    return this.http.post(this.globals.baseUrl + "/api/checkouts", body);
   }
 
 }
