@@ -17,11 +17,13 @@ export class VendaPage {
   ) { }
 
   scanCode() {
-    this.barcodeScanner.scan().then((barcodeData) => {      
-      var code: any = barcodeData.text;
-      var split: Array<string> = code.split("|");
-      this.user_id = split[0];
-      this.buscarProdutos();
+    this.barcodeScanner.scan().then((barcodeData) => {
+      if (barcodeData) {
+        var code: any = barcodeData.text;
+        var split: Array<string> = code.split("|");
+        this.user_id = split[0];
+        this.buscarProdutos();
+      }
     }, (err) => {
       throw new Error(err);
     });

@@ -26,8 +26,7 @@ export class CheckoutPage {
   scanCode() {
     this.barcodeScanner.scan().then(
       (barcodeData) => {
-        this.usuario_id = barcodeData.text;
-        this.presentAlert(this.usuario_id);
+        this.usuario_id = barcodeData.text;        
         this.doCheckout();
       },
       (err) => {
@@ -41,6 +40,7 @@ export class CheckoutPage {
       (data) => {
         if (data) {
           this.presentAlert("Usuário já realizou o pagamento");
+          this.emitirSocketCheckout();
         } else {
           this.presentAlert("Usuário ainda não realizou o pagamento");
         }
