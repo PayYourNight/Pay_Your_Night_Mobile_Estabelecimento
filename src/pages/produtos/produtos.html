@@ -15,14 +15,9 @@
         <ion-avatar item-start>
           <img src="{{produto.imagem}}">
         </ion-avatar>
-        <h3>Produto teste{{produto.titulo}}</h3>
+        <h3>{{produto.descricao}}</h3>
         <h6><small>{{produto.valor | number:'1.1-5'}}</small></h6>
-      </a> 
-      <!-- <pre>{{produto | json}}</pre> -->
+      </a>       
     </ion-item>       
   </ion-list>
-
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
 </ion-content>

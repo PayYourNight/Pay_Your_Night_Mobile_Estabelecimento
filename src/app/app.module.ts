@@ -74,7 +74,7 @@ Sentry.init({ dsn: 'https://bcb8b1b529be4cd4ae5b4f506b438625@sentry.io/1237024' 
     RegisterLayout2,
     BuscaProdutosVendaPage,
     QrcodeReaderConsumoPage,
-    EncerrarPedidoPage
+    EncerrarPedidoPage,    
   ],
   imports: [
     BrowserModule,

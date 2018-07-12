@@ -6,8 +6,8 @@ import { ViewController, NavParams  } from 'ionic-angular';
   templateUrl: 'produto.html'
 })
 export class ProdutoPage {
-  id : any;
+  item : any;
   constructor(private navParams: NavParams) {    
-      this.id = this.navParams.get('id');
+      this.item = this.navParams.get('item');
   }  
 }
